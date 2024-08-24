@@ -26,6 +26,8 @@ mixin _$ProductEntity {
   String get productImage => throw _privateConstructorUsedError;
   DateTime get productDate => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
+  double get discount => throw _privateConstructorUsedError;
+  bool get isNew => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +47,9 @@ abstract class $ProductEntityCopyWith<$Res> {
       String category,
       String productImage,
       DateTime productDate,
-      double price});
+      double price,
+      double discount,
+      bool isNew});
 }
 
 /// @nodoc
@@ -67,6 +71,8 @@ class _$ProductEntityCopyWithImpl<$Res, $Val extends ProductEntity>
     Object? productImage = null,
     Object? productDate = null,
     Object? price = null,
+    Object? discount = null,
+    Object? isNew = null,
   }) {
     return _then(_value.copyWith(
       title: null == title
@@ -93,6 +99,14 @@ class _$ProductEntityCopyWithImpl<$Res, $Val extends ProductEntity>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double,
+      discount: null == discount
+          ? _value.discount
+          : discount // ignore: cast_nullable_to_non_nullable
+              as double,
+      isNew: null == isNew
+          ? _value.isNew
+          : isNew // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -111,7 +125,9 @@ abstract class _$$ProductEntityImplCopyWith<$Res>
       String category,
       String productImage,
       DateTime productDate,
-      double price});
+      double price,
+      double discount,
+      bool isNew});
 }
 
 /// @nodoc
@@ -131,6 +147,8 @@ class __$$ProductEntityImplCopyWithImpl<$Res>
     Object? productImage = null,
     Object? productDate = null,
     Object? price = null,
+    Object? discount = null,
+    Object? isNew = null,
   }) {
     return _then(_$ProductEntityImpl(
       title: null == title
@@ -157,6 +175,14 @@ class __$$ProductEntityImplCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double,
+      discount: null == discount
+          ? _value.discount
+          : discount // ignore: cast_nullable_to_non_nullable
+              as double,
+      isNew: null == isNew
+          ? _value.isNew
+          : isNew // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -170,7 +196,9 @@ class _$ProductEntityImpl implements _ProductEntity {
       required this.category,
       required this.productImage,
       required this.productDate,
-      required this.price});
+      required this.price,
+      required this.discount,
+      required this.isNew});
 
   factory _$ProductEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductEntityImplFromJson(json);
@@ -187,10 +215,14 @@ class _$ProductEntityImpl implements _ProductEntity {
   final DateTime productDate;
   @override
   final double price;
+  @override
+  final double discount;
+  @override
+  final bool isNew;
 
   @override
   String toString() {
-    return 'ProductEntity(title: $title, description: $description, category: $category, productImage: $productImage, productDate: $productDate, price: $price)';
+    return 'ProductEntity(title: $title, description: $description, category: $category, productImage: $productImage, productDate: $productDate, price: $price, discount: $discount, isNew: $isNew)';
   }
 
   @override
@@ -207,13 +239,16 @@ class _$ProductEntityImpl implements _ProductEntity {
                 other.productImage == productImage) &&
             (identical(other.productDate, productDate) ||
                 other.productDate == productDate) &&
-            (identical(other.price, price) || other.price == price));
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.discount, discount) ||
+                other.discount == discount) &&
+            (identical(other.isNew, isNew) || other.isNew == isNew));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, title, description, category,
-      productImage, productDate, price);
+      productImage, productDate, price, discount, isNew);
 
   @JsonKey(ignore: true)
   @override
@@ -236,7 +271,9 @@ abstract class _ProductEntity implements ProductEntity {
       required final String category,
       required final String productImage,
       required final DateTime productDate,
-      required final double price}) = _$ProductEntityImpl;
+      required final double price,
+      required final double discount,
+      required final bool isNew}) = _$ProductEntityImpl;
 
   factory _ProductEntity.fromJson(Map<String, dynamic> json) =
       _$ProductEntityImpl.fromJson;
@@ -253,6 +290,10 @@ abstract class _ProductEntity implements ProductEntity {
   DateTime get productDate;
   @override
   double get price;
+  @override
+  double get discount;
+  @override
+  bool get isNew;
   @override
   @JsonKey(ignore: true)
   _$$ProductEntityImplCopyWith<_$ProductEntityImpl> get copyWith =>

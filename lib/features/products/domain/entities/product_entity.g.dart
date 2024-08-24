@@ -14,6 +14,8 @@ _$ProductEntityImpl _$$ProductEntityImplFromJson(Map<String, dynamic> json) =>
       productImage: json['productImage'] as String,
       productDate: DateTime.parse(json['productDate'] as String),
       price: (json['price'] as num).toDouble(),
+      discount: (json['discount'] as num).toDouble(),
+      isNew: json['isNew'] as bool,
     );
 
 Map<String, dynamic> _$$ProductEntityImplToJson(_$ProductEntityImpl instance) =>
@@ -24,4 +26,6 @@ Map<String, dynamic> _$$ProductEntityImplToJson(_$ProductEntityImpl instance) =>
       'productImage': instance.productImage,
       'productDate': instance.productDate.toIso8601String(),
       'price': instance.price,
+      'discount': instance.discount,
+      'isNew': instance.isNew,
     };

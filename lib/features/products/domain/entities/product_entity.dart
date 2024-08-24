@@ -13,6 +13,8 @@ class ProductEntity with _$ProductEntity {
     required String productImage,
     required DateTime productDate,
     required double price,
+    required double discount,
+    required bool isNew,
   }) = _ProductEntity;
 
   factory ProductEntity.fromJson(Map<String,dynamic> json) => _$ProductEntityFromJson(json);

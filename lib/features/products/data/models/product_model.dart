@@ -27,7 +27,7 @@ class ProductModel with _$ProductModel {
   factory ProductModel.fromJson(Map<String, dynamic> json) =>
       _$ProductModelFromJson(json);
 
-  ProductEntity toEntity(DateTime productDate) {
+  ProductEntity toEntity({required DateTime productDate,required bool isNew}) {
     return ProductEntity(
       title: title,
       description: description,
@@ -35,6 +35,8 @@ class ProductModel with _$ProductModel {
       productImage: thumbnail,
       productDate: productDate,
       price: price,
+      discount: discountPercentage,
+      isNew: isNew,
     );
   }
 }

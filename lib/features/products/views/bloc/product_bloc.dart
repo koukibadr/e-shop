@@ -42,7 +42,10 @@ class ProductBloc extends Bloc<ProductEvent, ProductScreenState> {
       var productsList = DataCompleted(
         listOfModels.map((model) {
           var dateTime = DateTime.parse(model.meta.createdAt);
-          return model.toEntity(dateTime);
+          return model.toEntity(
+            productDate: dateTime,
+            isNew: DateTime.now().difference(dateTime).inDays == 3
+          );
         }).toList(),
       );
       List<String> categories =
