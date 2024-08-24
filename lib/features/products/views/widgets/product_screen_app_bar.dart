@@ -4,17 +4,19 @@ import 'package:flutter/material.dart';
 class ProductScreenAppBar extends StatelessWidget
     implements PreferredSizeWidget {
   final Function(String?)? onSearch;
+  final Function() onRangeFilterPressed;
 
   const ProductScreenAppBar({
     super.key,
     required this.onSearch,
+    required this.onRangeFilterPressed,
   });
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        color: Color.fromARGB(255, 246, 246, 246),
+        color: Color(0xFFF6F6F6),
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 20,
@@ -47,7 +49,7 @@ class ProductScreenAppBar extends StatelessWidget
                     width: 40,
                     child: FloatingActionButton(
                       backgroundColor: Colors.blue,
-                      onPressed: () {},
+                      onPressed: onRangeFilterPressed,
                       elevation: 0,
                       child: const Icon(
                         Icons.filter_alt_outlined,

@@ -1,10 +1,9 @@
 import 'package:dummy_product/core/utilities/data_response.dart';
-import 'package:dummy_product/core/widgets/text_field_widget.dart';
-import 'package:dummy_product/features/products/domain/entities/product_entity.dart';
 import 'package:dummy_product/features/products/views/bloc/product_bloc.dart';
 import 'package:dummy_product/features/products/views/bloc/product_event.dart';
 import 'package:dummy_product/features/products/views/bloc/product_state.dart';
 import 'package:dummy_product/features/products/views/widgets/gridview_loading_shimmer.dart';
+import 'package:dummy_product/features/products/views/widgets/price_range_filter_dialog.dart';
 import 'package:dummy_product/features/products/views/widgets/product_list_item.dart';
 import 'package:dummy_product/features/products/views/widgets/product_screen_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -41,8 +40,11 @@ class _ProductScreenState extends State<ProductScreen> {
       backgroundColor: Colors.white,
       appBar: ProductScreenAppBar(
         onSearch: (searchQuery) {
-          context.read<ProductBloc>().add(SearchByKeyWordEvent(searchQuery ?? ''));
+          context.read<ProductBloc>().add(
+                SearchByKeyWordEvent(searchQuery ?? ''),
+              );
         },
+        onRangeFilterPressed: invokeRangeSliderFilter,
       ),
       body: Column(
         children: [
@@ -76,13 +78,18 @@ class _ProductScreenState extends State<ProductScreen> {
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 10),
                                 child: ChoiceChip(
-                                  selected: state.selectedProductCategories.contains(category),
+                                  selected: state.query.categories
+                                      .contains(category),
                                   label: Text(category),
                                   onSelected: (selected) {
-                                    if(selected){
-                                      context.read<ProductBloc>().add(FilterByCategoryEvent(category));
-                                    }else{
-                                      context.read<ProductBloc>().add(RemoveCategoryFromFilterEvent(category));
+                                    if (selected) {
+                                      context
+                                          .read<ProductBloc>()
+                                          .add(FilterByCategoryEvent(category));
+                                    } else {
+                                      context.read<ProductBloc>().add(
+                                          RemoveCategoryFromFilterEvent(
+                                              category));
                                     }
                                   },
                                 ),
@@ -129,5 +136,18 @@ class _ProductScreenState extends State<ProductScreen> {
         ),
       ),
     );
+  }
+
+  void invokeRangeSliderFilter() {
+    var productBloc = context.read<ProductBloc>();
+    var state = productBloc.state;
+    PriceRangeFilterDialog(
+      maxPrice: state.maxPrice,
+      minPrice: state.minPrice,
+      rangeValues: state.query.priceRange,
+      onPriceChanged: (newPriceRange) {
+        productBloc.add(FilterByPriceEvent(newPriceRange));
+      },
+    ).show(context);
   }
 }

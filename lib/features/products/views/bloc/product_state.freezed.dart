@@ -20,11 +20,10 @@ mixin _$ProductScreenState {
       throw _privateConstructorUsedError;
   List<ProductEntity> get displayedList => throw _privateConstructorUsedError;
   List<String> get productCategories => throw _privateConstructorUsedError;
-  List<String> get selectedProductCategories =>
-      throw _privateConstructorUsedError;
-  String get filteringQuery => throw _privateConstructorUsedError;
-  bool get dataIsLoading => throw _privateConstructorUsedError;
   int get currentListPage => throw _privateConstructorUsedError;
+  double get minPrice => throw _privateConstructorUsedError;
+  double get maxPrice => throw _privateConstructorUsedError;
+  ProductQuery get query => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductScreenStateCopyWith<ProductScreenState> get copyWith =>
@@ -41,12 +40,13 @@ abstract class $ProductScreenStateCopyWith<$Res> {
       {DataResponse<List<ProductEntity>> dataResponse,
       List<ProductEntity> displayedList,
       List<String> productCategories,
-      List<String> selectedProductCategories,
-      String filteringQuery,
-      bool dataIsLoading,
-      int currentListPage});
+      int currentListPage,
+      double minPrice,
+      double maxPrice,
+      ProductQuery query});
 
   $DataResponseCopyWith<List<ProductEntity>, $Res> get dataResponse;
+  $ProductQueryCopyWith<$Res> get query;
 }
 
 /// @nodoc
@@ -65,10 +65,10 @@ class _$ProductScreenStateCopyWithImpl<$Res, $Val extends ProductScreenState>
     Object? dataResponse = null,
     Object? displayedList = null,
     Object? productCategories = null,
-    Object? selectedProductCategories = null,
-    Object? filteringQuery = null,
-    Object? dataIsLoading = null,
     Object? currentListPage = null,
+    Object? minPrice = null,
+    Object? maxPrice = null,
+    Object? query = null,
   }) {
     return _then(_value.copyWith(
       dataResponse: null == dataResponse
@@ -83,22 +83,22 @@ class _$ProductScreenStateCopyWithImpl<$Res, $Val extends ProductScreenState>
           ? _value.productCategories
           : productCategories // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      selectedProductCategories: null == selectedProductCategories
-          ? _value.selectedProductCategories
-          : selectedProductCategories // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      filteringQuery: null == filteringQuery
-          ? _value.filteringQuery
-          : filteringQuery // ignore: cast_nullable_to_non_nullable
-              as String,
-      dataIsLoading: null == dataIsLoading
-          ? _value.dataIsLoading
-          : dataIsLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
       currentListPage: null == currentListPage
           ? _value.currentListPage
           : currentListPage // ignore: cast_nullable_to_non_nullable
               as int,
+      minPrice: null == minPrice
+          ? _value.minPrice
+          : minPrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      maxPrice: null == maxPrice
+          ? _value.maxPrice
+          : maxPrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      query: null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as ProductQuery,
     ) as $Val);
   }
 
@@ -108,6 +108,14 @@ class _$ProductScreenStateCopyWithImpl<$Res, $Val extends ProductScreenState>
     return $DataResponseCopyWith<List<ProductEntity>, $Res>(_value.dataResponse,
         (value) {
       return _then(_value.copyWith(dataResponse: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductQueryCopyWith<$Res> get query {
+    return $ProductQueryCopyWith<$Res>(_value.query, (value) {
+      return _then(_value.copyWith(query: value) as $Val);
     });
   }
 }
@@ -124,13 +132,15 @@ abstract class _$$ProductScreenStateImplCopyWith<$Res>
       {DataResponse<List<ProductEntity>> dataResponse,
       List<ProductEntity> displayedList,
       List<String> productCategories,
-      List<String> selectedProductCategories,
-      String filteringQuery,
-      bool dataIsLoading,
-      int currentListPage});
+      int currentListPage,
+      double minPrice,
+      double maxPrice,
+      ProductQuery query});
 
   @override
   $DataResponseCopyWith<List<ProductEntity>, $Res> get dataResponse;
+  @override
+  $ProductQueryCopyWith<$Res> get query;
 }
 
 /// @nodoc
@@ -147,10 +157,10 @@ class __$$ProductScreenStateImplCopyWithImpl<$Res>
     Object? dataResponse = null,
     Object? displayedList = null,
     Object? productCategories = null,
-    Object? selectedProductCategories = null,
-    Object? filteringQuery = null,
-    Object? dataIsLoading = null,
     Object? currentListPage = null,
+    Object? minPrice = null,
+    Object? maxPrice = null,
+    Object? query = null,
   }) {
     return _then(_$ProductScreenStateImpl(
       dataResponse: null == dataResponse
@@ -165,22 +175,22 @@ class __$$ProductScreenStateImplCopyWithImpl<$Res>
           ? _value._productCategories
           : productCategories // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      selectedProductCategories: null == selectedProductCategories
-          ? _value._selectedProductCategories
-          : selectedProductCategories // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      filteringQuery: null == filteringQuery
-          ? _value.filteringQuery
-          : filteringQuery // ignore: cast_nullable_to_non_nullable
-              as String,
-      dataIsLoading: null == dataIsLoading
-          ? _value.dataIsLoading
-          : dataIsLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
       currentListPage: null == currentListPage
           ? _value.currentListPage
           : currentListPage // ignore: cast_nullable_to_non_nullable
               as int,
+      minPrice: null == minPrice
+          ? _value.minPrice
+          : minPrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      maxPrice: null == maxPrice
+          ? _value.maxPrice
+          : maxPrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      query: null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as ProductQuery,
     ));
   }
 }
@@ -192,13 +202,12 @@ class _$ProductScreenStateImpl implements _ProductScreenState {
       {required this.dataResponse,
       final List<ProductEntity> displayedList = const [],
       final List<String> productCategories = const [],
-      final List<String> selectedProductCategories = const [],
-      this.filteringQuery = '',
-      this.dataIsLoading = true,
-      this.currentListPage = 0})
+      this.currentListPage = 0,
+      this.minPrice = 0,
+      this.maxPrice = 0,
+      this.query = const ProductQuery()})
       : _displayedList = displayedList,
-        _productCategories = productCategories,
-        _selectedProductCategories = selectedProductCategories;
+        _productCategories = productCategories;
 
   @override
   final DataResponse<List<ProductEntity>> dataResponse;
@@ -221,29 +230,22 @@ class _$ProductScreenStateImpl implements _ProductScreenState {
     return EqualUnmodifiableListView(_productCategories);
   }
 
-  final List<String> _selectedProductCategories;
-  @override
-  @JsonKey()
-  List<String> get selectedProductCategories {
-    if (_selectedProductCategories is EqualUnmodifiableListView)
-      return _selectedProductCategories;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_selectedProductCategories);
-  }
-
-  @override
-  @JsonKey()
-  final String filteringQuery;
-  @override
-  @JsonKey()
-  final bool dataIsLoading;
   @override
   @JsonKey()
   final int currentListPage;
+  @override
+  @JsonKey()
+  final double minPrice;
+  @override
+  @JsonKey()
+  final double maxPrice;
+  @override
+  @JsonKey()
+  final ProductQuery query;
 
   @override
   String toString() {
-    return 'ProductScreenState(dataResponse: $dataResponse, displayedList: $displayedList, productCategories: $productCategories, selectedProductCategories: $selectedProductCategories, filteringQuery: $filteringQuery, dataIsLoading: $dataIsLoading, currentListPage: $currentListPage)';
+    return 'ProductScreenState(dataResponse: $dataResponse, displayedList: $displayedList, productCategories: $productCategories, currentListPage: $currentListPage, minPrice: $minPrice, maxPrice: $maxPrice, query: $query)';
   }
 
   @override
@@ -257,14 +259,13 @@ class _$ProductScreenStateImpl implements _ProductScreenState {
                 .equals(other._displayedList, _displayedList) &&
             const DeepCollectionEquality()
                 .equals(other._productCategories, _productCategories) &&
-            const DeepCollectionEquality().equals(
-                other._selectedProductCategories, _selectedProductCategories) &&
-            (identical(other.filteringQuery, filteringQuery) ||
-                other.filteringQuery == filteringQuery) &&
-            (identical(other.dataIsLoading, dataIsLoading) ||
-                other.dataIsLoading == dataIsLoading) &&
             (identical(other.currentListPage, currentListPage) ||
-                other.currentListPage == currentListPage));
+                other.currentListPage == currentListPage) &&
+            (identical(other.minPrice, minPrice) ||
+                other.minPrice == minPrice) &&
+            (identical(other.maxPrice, maxPrice) ||
+                other.maxPrice == maxPrice) &&
+            (identical(other.query, query) || other.query == query));
   }
 
   @override
@@ -273,10 +274,10 @@ class _$ProductScreenStateImpl implements _ProductScreenState {
       dataResponse,
       const DeepCollectionEquality().hash(_displayedList),
       const DeepCollectionEquality().hash(_productCategories),
-      const DeepCollectionEquality().hash(_selectedProductCategories),
-      filteringQuery,
-      dataIsLoading,
-      currentListPage);
+      currentListPage,
+      minPrice,
+      maxPrice,
+      query);
 
   @JsonKey(ignore: true)
   @override
@@ -291,10 +292,10 @@ abstract class _ProductScreenState implements ProductScreenState {
       {required final DataResponse<List<ProductEntity>> dataResponse,
       final List<ProductEntity> displayedList,
       final List<String> productCategories,
-      final List<String> selectedProductCategories,
-      final String filteringQuery,
-      final bool dataIsLoading,
-      final int currentListPage}) = _$ProductScreenStateImpl;
+      final int currentListPage,
+      final double minPrice,
+      final double maxPrice,
+      final ProductQuery query}) = _$ProductScreenStateImpl;
 
   @override
   DataResponse<List<ProductEntity>> get dataResponse;
@@ -303,13 +304,13 @@ abstract class _ProductScreenState implements ProductScreenState {
   @override
   List<String> get productCategories;
   @override
-  List<String> get selectedProductCategories;
-  @override
-  String get filteringQuery;
-  @override
-  bool get dataIsLoading;
-  @override
   int get currentListPage;
+  @override
+  double get minPrice;
+  @override
+  double get maxPrice;
+  @override
+  ProductQuery get query;
   @override
   @JsonKey(ignore: true)
   _$$ProductScreenStateImplCopyWith<_$ProductScreenStateImpl> get copyWith =>
