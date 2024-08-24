@@ -1,17 +1,36 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dummy_product/features/cart/views/bloc/cart_bloc.dart';
+import 'package:dummy_product/features/cart/views/bloc/cart_events.dart';
+import 'package:dummy_product/features/cart/views/bloc/cart_state.dart';
 import 'package:dummy_product/features/products/views/bloc/product_bloc.dart';
 import 'package:dummy_product/features/products/views/bloc/product_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ProductDetailScreen extends StatelessWidget {
+class ProductDetailScreen extends StatefulWidget {
   const ProductDetailScreen({super.key});
 
+  @override
+  State<ProductDetailScreen> createState() => _ProductDetailScreenState();
+}
+
+class _ProductDetailScreenState extends State<ProductDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProductBloc, ProductScreenState>(
       builder: (context, state) {
         return Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.blue,
+            title: Text(
+              state.selectedProduct?.title ?? '',
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
           backgroundColor: Colors.white,
           body: SafeArea(
             child: Column(
@@ -99,28 +118,53 @@ class ProductDetailScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blue,
-                            ),
-                            child: const Row(
-                              children: [
-                                Icon(
-                                  Icons.shopping_cart_outlined,
-                                  color: Colors.white,
+                          BlocBuilder<CartBloc, CartScreenState>(
+                            builder: (context, cartState) {
+                              var productsInCart =
+                                  cartState.cartItems.map((e) => e.product);
+                              bool productExist = productsInCart
+                                  .contains(state.selectedProduct);
+                              return ElevatedButton(
+                                onPressed: () {
+                                  if (productExist) {
+                                    context.read<CartBloc>().add(
+                                          RemoveProductFromCartEvent(
+                                            product: state.selectedProduct!,
+                                          ),
+                                        );
+                                  } else if (state.selectedProduct != null) {
+                                    context.read<CartBloc>().add(
+                                          AddProductToCart(
+                                            product: state.selectedProduct!,
+                                          ),
+                                        );
+                                  }
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      productExist ? Colors.red : Colors.blue,
                                 ),
-                                SizedBox(
-                                  width: 10,
+                                child: Row(
+                                  children: [
+                                    const Icon(
+                                      Icons.shopping_cart_outlined,
+                                      color: Colors.white,
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      productExist
+                                          ? 'Remove from cart'
+                                          : 'Add to cart',
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                Text(
-                                  'Add to cart',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ],
-                            ),
+                              );
+                            },
                           )
                         ],
                       ),

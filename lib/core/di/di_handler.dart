@@ -1,4 +1,5 @@
 import 'package:dummy_product/core/api/api_handler.dart';
+import 'package:dummy_product/features/cart/views/bloc/cart_bloc.dart';
 import 'package:dummy_product/features/products/data/repositories/product_repository.dart';
 import 'package:dummy_product/features/products/data/repositories/product_repository_impl.dart';
 import 'package:dummy_product/features/products/domain/usecases/get_product_usecase.dart';
@@ -26,5 +27,9 @@ void initializeDI() {
     () => ProductBloc(
       getProductUseCase: getItInstance.get<GetProductUseCase>(),
     ),
+  );
+
+  getItInstance.registerFactory(
+    () => CartBloc(),
   );
 }

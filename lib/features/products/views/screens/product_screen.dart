@@ -149,7 +149,9 @@ class _ProductScreenState extends State<ProductScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         heroTag: null,
-        onPressed: () {},
+        onPressed: () {
+          GoRouter.of(context).push('/cart');
+        },
         backgroundColor: Colors.blue,
         child: const Icon(
           Icons.shopping_cart_outlined,
