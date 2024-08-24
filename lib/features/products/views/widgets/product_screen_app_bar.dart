@@ -27,7 +27,9 @@ class ProductScreenAppBar extends StatelessWidget
             children: [
               Text(
                 'All Products',
-                style: Theme.of(context).textTheme.titleLarge,
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const SizedBox(
                 height: 10,
@@ -48,7 +50,7 @@ class ProductScreenAppBar extends StatelessWidget
                     height: 40,
                     width: 40,
                     child: FloatingActionButton(
-                      backgroundColor: Colors.blue,
+                      backgroundColor: Colors.amber[700],
                       onPressed: onRangeFilterPressed,
                       elevation: 0,
                       child: const Icon(

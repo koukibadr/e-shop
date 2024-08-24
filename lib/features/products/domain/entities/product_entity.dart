@@ -7,6 +7,7 @@ part 'product_entity.g.dart';
 class ProductEntity with _$ProductEntity {
   
   factory ProductEntity({
+    required int id,
     required String title,
     required String description,
     required String category,

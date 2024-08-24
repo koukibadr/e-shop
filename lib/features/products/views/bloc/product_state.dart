@@ -15,5 +15,6 @@ class ProductScreenState with _$ProductScreenState {
     @Default(0) double minPrice,
     @Default(0) double maxPrice,
     @Default(ProductQuery()) ProductQuery query,
+    ProductEntity? selectedProduct,
   }) = _ProductScreenState;
 }

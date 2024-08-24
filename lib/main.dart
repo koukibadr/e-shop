@@ -1,6 +1,6 @@
 import 'package:dummy_product/core/di/di_handler.dart';
+import 'package:dummy_product/core/utilities/app_routes.dart';
 import 'package:dummy_product/features/products/views/bloc/product_bloc.dart';
-import 'package:dummy_product/features/products/views/screens/product_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const ProductScreen(),
+      routerConfig: appRoutes,
     );
   }
 }

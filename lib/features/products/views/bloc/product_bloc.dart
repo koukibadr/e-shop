@@ -22,6 +22,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductScreenState> {
     on<RemoveCategoryFromFilterEvent>(onCategoryRemoved);
     on<SearchByKeyWordEvent>(onSearchByKeywordTriggered);
     on<FilterByPriceEvent>(onFilterByEventTriggered);
+    on<UpdateSelectedProductEvent>(onUpdateSelectedProductTriggered);
   }
 
   void onFetchProductTriggered(event, emitter) async {
@@ -43,9 +44,8 @@ class ProductBloc extends Bloc<ProductEvent, ProductScreenState> {
         listOfModels.map((model) {
           var dateTime = DateTime.parse(model.meta.createdAt);
           return model.toEntity(
-            productDate: dateTime,
-            isNew: DateTime.now().difference(dateTime).inDays == 3
-          );
+              productDate: dateTime,
+              isNew: DateTime.now().difference(dateTime).inDays == 3);
         }).toList(),
       );
       List<String> categories =
@@ -159,5 +159,14 @@ class ProductBloc extends Bloc<ProductEvent, ProductScreenState> {
           (query.categories.isEmpty ||
               query.categories.contains(product.category));
     }).toList();
+  }
+
+  void onUpdateSelectedProductTriggered(
+      UpdateSelectedProductEvent event, emitter) {
+    emitter(
+      state.copyWith(
+        selectedProduct: event.product,
+      ),
+    );
   }
 }

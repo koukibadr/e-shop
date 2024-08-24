@@ -24,6 +24,7 @@ mixin _$ProductEvent {
     required TResult Function(String category) removeCategoryFromFilter,
     required TResult Function(String search) searchByKeyWord,
     required TResult Function(RangeValues rangeValues) filterByPrice,
+    required TResult Function(ProductEntity product) udpateSelectedProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,7 @@ mixin _$ProductEvent {
     TResult? Function(String category)? removeCategoryFromFilter,
     TResult? Function(String search)? searchByKeyWord,
     TResult? Function(RangeValues rangeValues)? filterByPrice,
+    TResult? Function(ProductEntity product)? udpateSelectedProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +46,7 @@ mixin _$ProductEvent {
     TResult Function(String category)? removeCategoryFromFilter,
     TResult Function(String search)? searchByKeyWord,
     TResult Function(RangeValues rangeValues)? filterByPrice,
+    TResult Function(ProductEntity product)? udpateSelectedProduct,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -56,6 +59,8 @@ mixin _$ProductEvent {
         removeCategoryFromFilter,
     required TResult Function(SearchByKeyWordEvent value) searchByKeyWord,
     required TResult Function(FilterByPriceEvent value) filterByPrice,
+    required TResult Function(UpdateSelectedProductEvent value)
+        udpateSelectedProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,6 +72,7 @@ mixin _$ProductEvent {
         removeCategoryFromFilter,
     TResult? Function(SearchByKeyWordEvent value)? searchByKeyWord,
     TResult? Function(FilterByPriceEvent value)? filterByPrice,
+    TResult? Function(UpdateSelectedProductEvent value)? udpateSelectedProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -78,6 +84,7 @@ mixin _$ProductEvent {
         removeCategoryFromFilter,
     TResult Function(SearchByKeyWordEvent value)? searchByKeyWord,
     TResult Function(FilterByPriceEvent value)? filterByPrice,
+    TResult Function(UpdateSelectedProductEvent value)? udpateSelectedProduct,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -146,6 +153,7 @@ class _$GetAllProductsEventImpl implements GetAllProductsEvent {
     required TResult Function(String category) removeCategoryFromFilter,
     required TResult Function(String search) searchByKeyWord,
     required TResult Function(RangeValues rangeValues) filterByPrice,
+    required TResult Function(ProductEntity product) udpateSelectedProduct,
   }) {
     return getAllData();
   }
@@ -159,6 +167,7 @@ class _$GetAllProductsEventImpl implements GetAllProductsEvent {
     TResult? Function(String category)? removeCategoryFromFilter,
     TResult? Function(String search)? searchByKeyWord,
     TResult? Function(RangeValues rangeValues)? filterByPrice,
+    TResult? Function(ProductEntity product)? udpateSelectedProduct,
   }) {
     return getAllData?.call();
   }
@@ -172,6 +181,7 @@ class _$GetAllProductsEventImpl implements GetAllProductsEvent {
     TResult Function(String category)? removeCategoryFromFilter,
     TResult Function(String search)? searchByKeyWord,
     TResult Function(RangeValues rangeValues)? filterByPrice,
+    TResult Function(ProductEntity product)? udpateSelectedProduct,
     required TResult orElse(),
   }) {
     if (getAllData != null) {
@@ -190,6 +200,8 @@ class _$GetAllProductsEventImpl implements GetAllProductsEvent {
         removeCategoryFromFilter,
     required TResult Function(SearchByKeyWordEvent value) searchByKeyWord,
     required TResult Function(FilterByPriceEvent value) filterByPrice,
+    required TResult Function(UpdateSelectedProductEvent value)
+        udpateSelectedProduct,
   }) {
     return getAllData(this);
   }
@@ -204,6 +216,7 @@ class _$GetAllProductsEventImpl implements GetAllProductsEvent {
         removeCategoryFromFilter,
     TResult? Function(SearchByKeyWordEvent value)? searchByKeyWord,
     TResult? Function(FilterByPriceEvent value)? filterByPrice,
+    TResult? Function(UpdateSelectedProductEvent value)? udpateSelectedProduct,
   }) {
     return getAllData?.call(this);
   }
@@ -218,6 +231,7 @@ class _$GetAllProductsEventImpl implements GetAllProductsEvent {
         removeCategoryFromFilter,
     TResult Function(SearchByKeyWordEvent value)? searchByKeyWord,
     TResult Function(FilterByPriceEvent value)? filterByPrice,
+    TResult Function(UpdateSelectedProductEvent value)? udpateSelectedProduct,
     required TResult orElse(),
   }) {
     if (getAllData != null) {
@@ -275,6 +289,7 @@ class _$GetNextPageEventImpl implements GetNextPageEvent {
     required TResult Function(String category) removeCategoryFromFilter,
     required TResult Function(String search) searchByKeyWord,
     required TResult Function(RangeValues rangeValues) filterByPrice,
+    required TResult Function(ProductEntity product) udpateSelectedProduct,
   }) {
     return getNextPage();
   }
@@ -288,6 +303,7 @@ class _$GetNextPageEventImpl implements GetNextPageEvent {
     TResult? Function(String category)? removeCategoryFromFilter,
     TResult? Function(String search)? searchByKeyWord,
     TResult? Function(RangeValues rangeValues)? filterByPrice,
+    TResult? Function(ProductEntity product)? udpateSelectedProduct,
   }) {
     return getNextPage?.call();
   }
@@ -301,6 +317,7 @@ class _$GetNextPageEventImpl implements GetNextPageEvent {
     TResult Function(String category)? removeCategoryFromFilter,
     TResult Function(String search)? searchByKeyWord,
     TResult Function(RangeValues rangeValues)? filterByPrice,
+    TResult Function(ProductEntity product)? udpateSelectedProduct,
     required TResult orElse(),
   }) {
     if (getNextPage != null) {
@@ -319,6 +336,8 @@ class _$GetNextPageEventImpl implements GetNextPageEvent {
         removeCategoryFromFilter,
     required TResult Function(SearchByKeyWordEvent value) searchByKeyWord,
     required TResult Function(FilterByPriceEvent value) filterByPrice,
+    required TResult Function(UpdateSelectedProductEvent value)
+        udpateSelectedProduct,
   }) {
     return getNextPage(this);
   }
@@ -333,6 +352,7 @@ class _$GetNextPageEventImpl implements GetNextPageEvent {
         removeCategoryFromFilter,
     TResult? Function(SearchByKeyWordEvent value)? searchByKeyWord,
     TResult? Function(FilterByPriceEvent value)? filterByPrice,
+    TResult? Function(UpdateSelectedProductEvent value)? udpateSelectedProduct,
   }) {
     return getNextPage?.call(this);
   }
@@ -347,6 +367,7 @@ class _$GetNextPageEventImpl implements GetNextPageEvent {
         removeCategoryFromFilter,
     TResult Function(SearchByKeyWordEvent value)? searchByKeyWord,
     TResult Function(FilterByPriceEvent value)? filterByPrice,
+    TResult Function(UpdateSelectedProductEvent value)? udpateSelectedProduct,
     required TResult orElse(),
   }) {
     if (getNextPage != null) {
@@ -433,6 +454,7 @@ class _$FilterByCategoryEventImpl implements FilterByCategoryEvent {
     required TResult Function(String category) removeCategoryFromFilter,
     required TResult Function(String search) searchByKeyWord,
     required TResult Function(RangeValues rangeValues) filterByPrice,
+    required TResult Function(ProductEntity product) udpateSelectedProduct,
   }) {
     return filterByCategory(category);
   }
@@ -446,6 +468,7 @@ class _$FilterByCategoryEventImpl implements FilterByCategoryEvent {
     TResult? Function(String category)? removeCategoryFromFilter,
     TResult? Function(String search)? searchByKeyWord,
     TResult? Function(RangeValues rangeValues)? filterByPrice,
+    TResult? Function(ProductEntity product)? udpateSelectedProduct,
   }) {
     return filterByCategory?.call(category);
   }
@@ -459,6 +482,7 @@ class _$FilterByCategoryEventImpl implements FilterByCategoryEvent {
     TResult Function(String category)? removeCategoryFromFilter,
     TResult Function(String search)? searchByKeyWord,
     TResult Function(RangeValues rangeValues)? filterByPrice,
+    TResult Function(ProductEntity product)? udpateSelectedProduct,
     required TResult orElse(),
   }) {
     if (filterByCategory != null) {
@@ -477,6 +501,8 @@ class _$FilterByCategoryEventImpl implements FilterByCategoryEvent {
         removeCategoryFromFilter,
     required TResult Function(SearchByKeyWordEvent value) searchByKeyWord,
     required TResult Function(FilterByPriceEvent value) filterByPrice,
+    required TResult Function(UpdateSelectedProductEvent value)
+        udpateSelectedProduct,
   }) {
     return filterByCategory(this);
   }
@@ -491,6 +517,7 @@ class _$FilterByCategoryEventImpl implements FilterByCategoryEvent {
         removeCategoryFromFilter,
     TResult? Function(SearchByKeyWordEvent value)? searchByKeyWord,
     TResult? Function(FilterByPriceEvent value)? filterByPrice,
+    TResult? Function(UpdateSelectedProductEvent value)? udpateSelectedProduct,
   }) {
     return filterByCategory?.call(this);
   }
@@ -505,6 +532,7 @@ class _$FilterByCategoryEventImpl implements FilterByCategoryEvent {
         removeCategoryFromFilter,
     TResult Function(SearchByKeyWordEvent value)? searchByKeyWord,
     TResult Function(FilterByPriceEvent value)? filterByPrice,
+    TResult Function(UpdateSelectedProductEvent value)? udpateSelectedProduct,
     required TResult orElse(),
   }) {
     if (filterByCategory != null) {
@@ -601,6 +629,7 @@ class _$RemoveCategoryFromFilterEventImpl
     required TResult Function(String category) removeCategoryFromFilter,
     required TResult Function(String search) searchByKeyWord,
     required TResult Function(RangeValues rangeValues) filterByPrice,
+    required TResult Function(ProductEntity product) udpateSelectedProduct,
   }) {
     return removeCategoryFromFilter(category);
   }
@@ -614,6 +643,7 @@ class _$RemoveCategoryFromFilterEventImpl
     TResult? Function(String category)? removeCategoryFromFilter,
     TResult? Function(String search)? searchByKeyWord,
     TResult? Function(RangeValues rangeValues)? filterByPrice,
+    TResult? Function(ProductEntity product)? udpateSelectedProduct,
   }) {
     return removeCategoryFromFilter?.call(category);
   }
@@ -627,6 +657,7 @@ class _$RemoveCategoryFromFilterEventImpl
     TResult Function(String category)? removeCategoryFromFilter,
     TResult Function(String search)? searchByKeyWord,
     TResult Function(RangeValues rangeValues)? filterByPrice,
+    TResult Function(ProductEntity product)? udpateSelectedProduct,
     required TResult orElse(),
   }) {
     if (removeCategoryFromFilter != null) {
@@ -645,6 +676,8 @@ class _$RemoveCategoryFromFilterEventImpl
         removeCategoryFromFilter,
     required TResult Function(SearchByKeyWordEvent value) searchByKeyWord,
     required TResult Function(FilterByPriceEvent value) filterByPrice,
+    required TResult Function(UpdateSelectedProductEvent value)
+        udpateSelectedProduct,
   }) {
     return removeCategoryFromFilter(this);
   }
@@ -659,6 +692,7 @@ class _$RemoveCategoryFromFilterEventImpl
         removeCategoryFromFilter,
     TResult? Function(SearchByKeyWordEvent value)? searchByKeyWord,
     TResult? Function(FilterByPriceEvent value)? filterByPrice,
+    TResult? Function(UpdateSelectedProductEvent value)? udpateSelectedProduct,
   }) {
     return removeCategoryFromFilter?.call(this);
   }
@@ -673,6 +707,7 @@ class _$RemoveCategoryFromFilterEventImpl
         removeCategoryFromFilter,
     TResult Function(SearchByKeyWordEvent value)? searchByKeyWord,
     TResult Function(FilterByPriceEvent value)? filterByPrice,
+    TResult Function(UpdateSelectedProductEvent value)? udpateSelectedProduct,
     required TResult orElse(),
   }) {
     if (removeCategoryFromFilter != null) {
@@ -765,6 +800,7 @@ class _$SearchByKeyWordEventImpl implements SearchByKeyWordEvent {
     required TResult Function(String category) removeCategoryFromFilter,
     required TResult Function(String search) searchByKeyWord,
     required TResult Function(RangeValues rangeValues) filterByPrice,
+    required TResult Function(ProductEntity product) udpateSelectedProduct,
   }) {
     return searchByKeyWord(search);
   }
@@ -778,6 +814,7 @@ class _$SearchByKeyWordEventImpl implements SearchByKeyWordEvent {
     TResult? Function(String category)? removeCategoryFromFilter,
     TResult? Function(String search)? searchByKeyWord,
     TResult? Function(RangeValues rangeValues)? filterByPrice,
+    TResult? Function(ProductEntity product)? udpateSelectedProduct,
   }) {
     return searchByKeyWord?.call(search);
   }
@@ -791,6 +828,7 @@ class _$SearchByKeyWordEventImpl implements SearchByKeyWordEvent {
     TResult Function(String category)? removeCategoryFromFilter,
     TResult Function(String search)? searchByKeyWord,
     TResult Function(RangeValues rangeValues)? filterByPrice,
+    TResult Function(ProductEntity product)? udpateSelectedProduct,
     required TResult orElse(),
   }) {
     if (searchByKeyWord != null) {
@@ -809,6 +847,8 @@ class _$SearchByKeyWordEventImpl implements SearchByKeyWordEvent {
         removeCategoryFromFilter,
     required TResult Function(SearchByKeyWordEvent value) searchByKeyWord,
     required TResult Function(FilterByPriceEvent value) filterByPrice,
+    required TResult Function(UpdateSelectedProductEvent value)
+        udpateSelectedProduct,
   }) {
     return searchByKeyWord(this);
   }
@@ -823,6 +863,7 @@ class _$SearchByKeyWordEventImpl implements SearchByKeyWordEvent {
         removeCategoryFromFilter,
     TResult? Function(SearchByKeyWordEvent value)? searchByKeyWord,
     TResult? Function(FilterByPriceEvent value)? filterByPrice,
+    TResult? Function(UpdateSelectedProductEvent value)? udpateSelectedProduct,
   }) {
     return searchByKeyWord?.call(this);
   }
@@ -837,6 +878,7 @@ class _$SearchByKeyWordEventImpl implements SearchByKeyWordEvent {
         removeCategoryFromFilter,
     TResult Function(SearchByKeyWordEvent value)? searchByKeyWord,
     TResult Function(FilterByPriceEvent value)? filterByPrice,
+    TResult Function(UpdateSelectedProductEvent value)? udpateSelectedProduct,
     required TResult orElse(),
   }) {
     if (searchByKeyWord != null) {
@@ -928,6 +970,7 @@ class _$FilterByPriceEventImpl implements FilterByPriceEvent {
     required TResult Function(String category) removeCategoryFromFilter,
     required TResult Function(String search) searchByKeyWord,
     required TResult Function(RangeValues rangeValues) filterByPrice,
+    required TResult Function(ProductEntity product) udpateSelectedProduct,
   }) {
     return filterByPrice(rangeValues);
   }
@@ -941,6 +984,7 @@ class _$FilterByPriceEventImpl implements FilterByPriceEvent {
     TResult? Function(String category)? removeCategoryFromFilter,
     TResult? Function(String search)? searchByKeyWord,
     TResult? Function(RangeValues rangeValues)? filterByPrice,
+    TResult? Function(ProductEntity product)? udpateSelectedProduct,
   }) {
     return filterByPrice?.call(rangeValues);
   }
@@ -954,6 +998,7 @@ class _$FilterByPriceEventImpl implements FilterByPriceEvent {
     TResult Function(String category)? removeCategoryFromFilter,
     TResult Function(String search)? searchByKeyWord,
     TResult Function(RangeValues rangeValues)? filterByPrice,
+    TResult Function(ProductEntity product)? udpateSelectedProduct,
     required TResult orElse(),
   }) {
     if (filterByPrice != null) {
@@ -972,6 +1017,8 @@ class _$FilterByPriceEventImpl implements FilterByPriceEvent {
         removeCategoryFromFilter,
     required TResult Function(SearchByKeyWordEvent value) searchByKeyWord,
     required TResult Function(FilterByPriceEvent value) filterByPrice,
+    required TResult Function(UpdateSelectedProductEvent value)
+        udpateSelectedProduct,
   }) {
     return filterByPrice(this);
   }
@@ -986,6 +1033,7 @@ class _$FilterByPriceEventImpl implements FilterByPriceEvent {
         removeCategoryFromFilter,
     TResult? Function(SearchByKeyWordEvent value)? searchByKeyWord,
     TResult? Function(FilterByPriceEvent value)? filterByPrice,
+    TResult? Function(UpdateSelectedProductEvent value)? udpateSelectedProduct,
   }) {
     return filterByPrice?.call(this);
   }
@@ -1000,6 +1048,7 @@ class _$FilterByPriceEventImpl implements FilterByPriceEvent {
         removeCategoryFromFilter,
     TResult Function(SearchByKeyWordEvent value)? searchByKeyWord,
     TResult Function(FilterByPriceEvent value)? filterByPrice,
+    TResult Function(UpdateSelectedProductEvent value)? udpateSelectedProduct,
     required TResult orElse(),
   }) {
     if (filterByPrice != null) {
@@ -1017,4 +1066,185 @@ abstract class FilterByPriceEvent implements ProductEvent {
   @JsonKey(ignore: true)
   _$$FilterByPriceEventImplCopyWith<_$FilterByPriceEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateSelectedProductEventImplCopyWith<$Res> {
+  factory _$$UpdateSelectedProductEventImplCopyWith(
+          _$UpdateSelectedProductEventImpl value,
+          $Res Function(_$UpdateSelectedProductEventImpl) then) =
+      __$$UpdateSelectedProductEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ProductEntity product});
+
+  $ProductEntityCopyWith<$Res> get product;
+}
+
+/// @nodoc
+class __$$UpdateSelectedProductEventImplCopyWithImpl<$Res>
+    extends _$ProductEventCopyWithImpl<$Res, _$UpdateSelectedProductEventImpl>
+    implements _$$UpdateSelectedProductEventImplCopyWith<$Res> {
+  __$$UpdateSelectedProductEventImplCopyWithImpl(
+      _$UpdateSelectedProductEventImpl _value,
+      $Res Function(_$UpdateSelectedProductEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? product = null,
+  }) {
+    return _then(_$UpdateSelectedProductEventImpl(
+      null == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as ProductEntity,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductEntityCopyWith<$Res> get product {
+    return $ProductEntityCopyWith<$Res>(_value.product, (value) {
+      return _then(_value.copyWith(product: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$UpdateSelectedProductEventImpl implements UpdateSelectedProductEvent {
+  _$UpdateSelectedProductEventImpl(this.product);
+
+  @override
+  final ProductEntity product;
+
+  @override
+  String toString() {
+    return 'ProductEvent.udpateSelectedProduct(product: $product)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateSelectedProductEventImpl &&
+            (identical(other.product, product) || other.product == product));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, product);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateSelectedProductEventImplCopyWith<_$UpdateSelectedProductEventImpl>
+      get copyWith => __$$UpdateSelectedProductEventImplCopyWithImpl<
+          _$UpdateSelectedProductEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getAllData,
+    required TResult Function() getNextPage,
+    required TResult Function(String category) filterByCategory,
+    required TResult Function(String category) removeCategoryFromFilter,
+    required TResult Function(String search) searchByKeyWord,
+    required TResult Function(RangeValues rangeValues) filterByPrice,
+    required TResult Function(ProductEntity product) udpateSelectedProduct,
+  }) {
+    return udpateSelectedProduct(product);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getAllData,
+    TResult? Function()? getNextPage,
+    TResult? Function(String category)? filterByCategory,
+    TResult? Function(String category)? removeCategoryFromFilter,
+    TResult? Function(String search)? searchByKeyWord,
+    TResult? Function(RangeValues rangeValues)? filterByPrice,
+    TResult? Function(ProductEntity product)? udpateSelectedProduct,
+  }) {
+    return udpateSelectedProduct?.call(product);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getAllData,
+    TResult Function()? getNextPage,
+    TResult Function(String category)? filterByCategory,
+    TResult Function(String category)? removeCategoryFromFilter,
+    TResult Function(String search)? searchByKeyWord,
+    TResult Function(RangeValues rangeValues)? filterByPrice,
+    TResult Function(ProductEntity product)? udpateSelectedProduct,
+    required TResult orElse(),
+  }) {
+    if (udpateSelectedProduct != null) {
+      return udpateSelectedProduct(product);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAllProductsEvent value) getAllData,
+    required TResult Function(GetNextPageEvent value) getNextPage,
+    required TResult Function(FilterByCategoryEvent value) filterByCategory,
+    required TResult Function(RemoveCategoryFromFilterEvent value)
+        removeCategoryFromFilter,
+    required TResult Function(SearchByKeyWordEvent value) searchByKeyWord,
+    required TResult Function(FilterByPriceEvent value) filterByPrice,
+    required TResult Function(UpdateSelectedProductEvent value)
+        udpateSelectedProduct,
+  }) {
+    return udpateSelectedProduct(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAllProductsEvent value)? getAllData,
+    TResult? Function(GetNextPageEvent value)? getNextPage,
+    TResult? Function(FilterByCategoryEvent value)? filterByCategory,
+    TResult? Function(RemoveCategoryFromFilterEvent value)?
+        removeCategoryFromFilter,
+    TResult? Function(SearchByKeyWordEvent value)? searchByKeyWord,
+    TResult? Function(FilterByPriceEvent value)? filterByPrice,
+    TResult? Function(UpdateSelectedProductEvent value)? udpateSelectedProduct,
+  }) {
+    return udpateSelectedProduct?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAllProductsEvent value)? getAllData,
+    TResult Function(GetNextPageEvent value)? getNextPage,
+    TResult Function(FilterByCategoryEvent value)? filterByCategory,
+    TResult Function(RemoveCategoryFromFilterEvent value)?
+        removeCategoryFromFilter,
+    TResult Function(SearchByKeyWordEvent value)? searchByKeyWord,
+    TResult Function(FilterByPriceEvent value)? filterByPrice,
+    TResult Function(UpdateSelectedProductEvent value)? udpateSelectedProduct,
+    required TResult orElse(),
+  }) {
+    if (udpateSelectedProduct != null) {
+      return udpateSelectedProduct(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateSelectedProductEvent implements ProductEvent {
+  factory UpdateSelectedProductEvent(final ProductEntity product) =
+      _$UpdateSelectedProductEventImpl;
+
+  ProductEntity get product;
+  @JsonKey(ignore: true)
+  _$$UpdateSelectedProductEventImplCopyWith<_$UpdateSelectedProductEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

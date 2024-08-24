@@ -8,6 +8,7 @@ import 'package:dummy_product/features/products/views/widgets/product_list_item.
 import 'package:dummy_product/features/products/views/widgets/product_screen_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductScreen extends StatefulWidget {
   const ProductScreen({super.key});
@@ -75,23 +76,30 @@ class _ProductScreenState extends State<ProductScreen> {
                             itemBuilder: (context, index) {
                               var category = state.productCategories[index];
                               return Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 10),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                ),
                                 child: ChoiceChip(
-                                  selected: state.query.categories
-                                      .contains(category),
+                                  selected:
+                                      state.query.categories.contains(category),
                                   label: Text(category),
                                   onSelected: (selected) {
                                     if (selected) {
-                                      context
-                                          .read<ProductBloc>()
-                                          .add(FilterByCategoryEvent(category));
+                                      context.read<ProductBloc>().add(
+                                            FilterByCategoryEvent(
+                                              category,
+                                            ),
+                                          );
                                     } else {
                                       context.read<ProductBloc>().add(
-                                          RemoveCategoryFromFilterEvent(
-                                              category));
+                                            RemoveCategoryFromFilterEvent(
+                                              category,
+                                            ),
+                                          );
                                     }
                                   },
+                                  backgroundColor: Colors.blue[100],
+                                  selectedColor: Colors.blue,
                                 ),
                               );
                             },
@@ -114,8 +122,18 @@ class _ProductScreenState extends State<ProductScreen> {
                             ),
                             itemCount: state.displayedList.length,
                             itemBuilder: (context, index) {
-                              return ProductListItem(
-                                product: state.displayedList[index],
+                              return InkWell(
+                                onTap: () {
+                                  context.read<ProductBloc>().add(
+                                        UpdateSelectedProductEvent(
+                                          state.displayedList[index],
+                                        ),
+                                      );
+                                  GoRouter.of(context).push('/details');
+                                },
+                                child: ProductListItem(
+                                  product: state.displayedList[index],
+                                ),
                               );
                             },
                           ),
@@ -130,9 +148,12 @@ class _ProductScreenState extends State<ProductScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
+        heroTag: null,
         onPressed: () {},
-        child: Icon(
+        backgroundColor: Colors.blue,
+        child: const Icon(
           Icons.shopping_cart_outlined,
+          color: Colors.white,
         ),
       ),
     );

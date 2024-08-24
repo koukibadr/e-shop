@@ -20,6 +20,7 @@ ProductEntity _$ProductEntityFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ProductEntity {
+  int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get category => throw _privateConstructorUsedError;
@@ -42,7 +43,8 @@ abstract class $ProductEntityCopyWith<$Res> {
       _$ProductEntityCopyWithImpl<$Res, ProductEntity>;
   @useResult
   $Res call(
-      {String title,
+      {int id,
+      String title,
       String description,
       String category,
       String productImage,
@@ -65,6 +67,7 @@ class _$ProductEntityCopyWithImpl<$Res, $Val extends ProductEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = null,
     Object? description = null,
     Object? category = null,
@@ -75,6 +78,10 @@ class _$ProductEntityCopyWithImpl<$Res, $Val extends ProductEntity>
     Object? isNew = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -120,7 +127,8 @@ abstract class _$$ProductEntityImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String title,
+      {int id,
+      String title,
       String description,
       String category,
       String productImage,
@@ -141,6 +149,7 @@ class __$$ProductEntityImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = null,
     Object? description = null,
     Object? category = null,
@@ -151,6 +160,10 @@ class __$$ProductEntityImplCopyWithImpl<$Res>
     Object? isNew = null,
   }) {
     return _then(_$ProductEntityImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -191,7 +204,8 @@ class __$$ProductEntityImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ProductEntityImpl implements _ProductEntity {
   _$ProductEntityImpl(
-      {required this.title,
+      {required this.id,
+      required this.title,
       required this.description,
       required this.category,
       required this.productImage,
@@ -203,6 +217,8 @@ class _$ProductEntityImpl implements _ProductEntity {
   factory _$ProductEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductEntityImplFromJson(json);
 
+  @override
+  final int id;
   @override
   final String title;
   @override
@@ -222,7 +238,7 @@ class _$ProductEntityImpl implements _ProductEntity {
 
   @override
   String toString() {
-    return 'ProductEntity(title: $title, description: $description, category: $category, productImage: $productImage, productDate: $productDate, price: $price, discount: $discount, isNew: $isNew)';
+    return 'ProductEntity(id: $id, title: $title, description: $description, category: $category, productImage: $productImage, productDate: $productDate, price: $price, discount: $discount, isNew: $isNew)';
   }
 
   @override
@@ -230,6 +246,7 @@ class _$ProductEntityImpl implements _ProductEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductEntityImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -247,7 +264,7 @@ class _$ProductEntityImpl implements _ProductEntity {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, description, category,
+  int get hashCode => Object.hash(runtimeType, id, title, description, category,
       productImage, productDate, price, discount, isNew);
 
   @JsonKey(ignore: true)
@@ -266,7 +283,8 @@ class _$ProductEntityImpl implements _ProductEntity {
 
 abstract class _ProductEntity implements ProductEntity {
   factory _ProductEntity(
-      {required final String title,
+      {required final int id,
+      required final String title,
       required final String description,
       required final String category,
       required final String productImage,
@@ -278,6 +296,8 @@ abstract class _ProductEntity implements ProductEntity {
   factory _ProductEntity.fromJson(Map<String, dynamic> json) =
       _$ProductEntityImpl.fromJson;
 
+  @override
+  int get id;
   @override
   String get title;
   @override

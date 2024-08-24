@@ -1,3 +1,4 @@
+import 'package:dummy_product/features/products/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -12,6 +13,7 @@ sealed class ProductEvent with _$ProductEvent {
   factory ProductEvent.removeCategoryFromFilter(String category) = RemoveCategoryFromFilterEvent;
   factory ProductEvent.searchByKeyWord(String search) = SearchByKeyWordEvent;
   factory ProductEvent.filterByPrice(RangeValues rangeValues) = FilterByPriceEvent;
+  factory ProductEvent.udpateSelectedProduct(ProductEntity product) = UpdateSelectedProductEvent;
 
 
 }

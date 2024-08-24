@@ -10,6 +10,7 @@ class ProductModel with _$ProductModel {
   const ProductModel._();
 
   factory ProductModel({
+    required int id,
     required String title,
     required String description,
     required String category,
@@ -29,6 +30,7 @@ class ProductModel with _$ProductModel {
 
   ProductEntity toEntity({required DateTime productDate,required bool isNew}) {
     return ProductEntity(
+      id: id,
       title: title,
       description: description,
       category: category,

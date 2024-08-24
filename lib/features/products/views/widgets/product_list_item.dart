@@ -37,9 +37,12 @@ class ProductListItem extends StatelessWidget {
                   ),
                 Align(
                   alignment: Alignment.center,
-                  child: CachedNetworkImage(
-                    imageUrl: product.productImage,
-                    fit: BoxFit.cover,
+                  child: Hero(
+                    tag: product.id,
+                    child: CachedNetworkImage(
+                      imageUrl: product.productImage,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 if (product.isNew)

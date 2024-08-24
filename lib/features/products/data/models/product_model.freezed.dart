@@ -20,6 +20,7 @@ ProductModel _$ProductModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ProductModel {
+  int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get category => throw _privateConstructorUsedError;
@@ -46,7 +47,8 @@ abstract class $ProductModelCopyWith<$Res> {
       _$ProductModelCopyWithImpl<$Res, ProductModel>;
   @useResult
   $Res call(
-      {String title,
+      {int id,
+      String title,
       String description,
       String category,
       List<String> images,
@@ -75,6 +77,7 @@ class _$ProductModelCopyWithImpl<$Res, $Val extends ProductModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = null,
     Object? description = null,
     Object? category = null,
@@ -89,6 +92,10 @@ class _$ProductModelCopyWithImpl<$Res, $Val extends ProductModel>
     Object? meta = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -158,7 +165,8 @@ abstract class _$$ProductModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String title,
+      {int id,
+      String title,
       String description,
       String category,
       List<String> images,
@@ -186,6 +194,7 @@ class __$$ProductModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = null,
     Object? description = null,
     Object? category = null,
@@ -200,6 +209,10 @@ class __$$ProductModelImplCopyWithImpl<$Res>
     Object? meta = null,
   }) {
     return _then(_$ProductModelImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -256,7 +269,8 @@ class __$$ProductModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ProductModelImpl extends _ProductModel {
   _$ProductModelImpl(
-      {required this.title,
+      {required this.id,
+      required this.title,
       required this.description,
       required this.category,
       required final List<String> images,
@@ -274,6 +288,8 @@ class _$ProductModelImpl extends _ProductModel {
   factory _$ProductModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductModelImplFromJson(json);
 
+  @override
+  final int id;
   @override
   final String title;
   @override
@@ -307,7 +323,7 @@ class _$ProductModelImpl extends _ProductModel {
 
   @override
   String toString() {
-    return 'ProductModel(title: $title, description: $description, category: $category, images: $images, thumbnail: $thumbnail, price: $price, discountPercentage: $discountPercentage, rating: $rating, stock: $stock, warrantyInformation: $warrantyInformation, shippingInformation: $shippingInformation, meta: $meta)';
+    return 'ProductModel(id: $id, title: $title, description: $description, category: $category, images: $images, thumbnail: $thumbnail, price: $price, discountPercentage: $discountPercentage, rating: $rating, stock: $stock, warrantyInformation: $warrantyInformation, shippingInformation: $shippingInformation, meta: $meta)';
   }
 
   @override
@@ -315,6 +331,7 @@ class _$ProductModelImpl extends _ProductModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -339,6 +356,7 @@ class _$ProductModelImpl extends _ProductModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      id,
       title,
       description,
       category,
@@ -368,7 +386,8 @@ class _$ProductModelImpl extends _ProductModel {
 
 abstract class _ProductModel extends ProductModel {
   factory _ProductModel(
-      {required final String title,
+      {required final int id,
+      required final String title,
       required final String description,
       required final String category,
       required final List<String> images,
@@ -385,6 +404,8 @@ abstract class _ProductModel extends ProductModel {
   factory _ProductModel.fromJson(Map<String, dynamic> json) =
       _$ProductModelImpl.fromJson;
 
+  @override
+  int get id;
   @override
   String get title;
   @override
