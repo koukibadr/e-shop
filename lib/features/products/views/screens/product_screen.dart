@@ -39,7 +39,11 @@ class _ProductScreenState extends State<ProductScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: const ProductScreenAppBar(),
+      appBar: ProductScreenAppBar(
+        onSearch: (searchQuery) {
+          context.read<ProductBloc>().add(SearchByKeyWordEvent(searchQuery ?? ''));
+        },
+      ),
       body: Column(
         children: [
           BlocBuilder<ProductBloc, ProductScreenState>(

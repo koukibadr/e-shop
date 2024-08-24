@@ -22,6 +22,7 @@ mixin _$ProductScreenState {
   List<String> get productCategories => throw _privateConstructorUsedError;
   List<String> get selectedProductCategories =>
       throw _privateConstructorUsedError;
+  String get filteringQuery => throw _privateConstructorUsedError;
   bool get dataIsLoading => throw _privateConstructorUsedError;
   int get currentListPage => throw _privateConstructorUsedError;
 
@@ -41,6 +42,7 @@ abstract class $ProductScreenStateCopyWith<$Res> {
       List<ProductEntity> displayedList,
       List<String> productCategories,
       List<String> selectedProductCategories,
+      String filteringQuery,
       bool dataIsLoading,
       int currentListPage});
 
@@ -64,6 +66,7 @@ class _$ProductScreenStateCopyWithImpl<$Res, $Val extends ProductScreenState>
     Object? displayedList = null,
     Object? productCategories = null,
     Object? selectedProductCategories = null,
+    Object? filteringQuery = null,
     Object? dataIsLoading = null,
     Object? currentListPage = null,
   }) {
@@ -84,6 +87,10 @@ class _$ProductScreenStateCopyWithImpl<$Res, $Val extends ProductScreenState>
           ? _value.selectedProductCategories
           : selectedProductCategories // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      filteringQuery: null == filteringQuery
+          ? _value.filteringQuery
+          : filteringQuery // ignore: cast_nullable_to_non_nullable
+              as String,
       dataIsLoading: null == dataIsLoading
           ? _value.dataIsLoading
           : dataIsLoading // ignore: cast_nullable_to_non_nullable
@@ -118,6 +125,7 @@ abstract class _$$ProductScreenStateImplCopyWith<$Res>
       List<ProductEntity> displayedList,
       List<String> productCategories,
       List<String> selectedProductCategories,
+      String filteringQuery,
       bool dataIsLoading,
       int currentListPage});
 
@@ -140,6 +148,7 @@ class __$$ProductScreenStateImplCopyWithImpl<$Res>
     Object? displayedList = null,
     Object? productCategories = null,
     Object? selectedProductCategories = null,
+    Object? filteringQuery = null,
     Object? dataIsLoading = null,
     Object? currentListPage = null,
   }) {
@@ -160,6 +169,10 @@ class __$$ProductScreenStateImplCopyWithImpl<$Res>
           ? _value._selectedProductCategories
           : selectedProductCategories // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      filteringQuery: null == filteringQuery
+          ? _value.filteringQuery
+          : filteringQuery // ignore: cast_nullable_to_non_nullable
+              as String,
       dataIsLoading: null == dataIsLoading
           ? _value.dataIsLoading
           : dataIsLoading // ignore: cast_nullable_to_non_nullable
@@ -180,6 +193,7 @@ class _$ProductScreenStateImpl implements _ProductScreenState {
       final List<ProductEntity> displayedList = const [],
       final List<String> productCategories = const [],
       final List<String> selectedProductCategories = const [],
+      this.filteringQuery = '',
       this.dataIsLoading = true,
       this.currentListPage = 0})
       : _displayedList = displayedList,
@@ -219,6 +233,9 @@ class _$ProductScreenStateImpl implements _ProductScreenState {
 
   @override
   @JsonKey()
+  final String filteringQuery;
+  @override
+  @JsonKey()
   final bool dataIsLoading;
   @override
   @JsonKey()
@@ -226,7 +243,7 @@ class _$ProductScreenStateImpl implements _ProductScreenState {
 
   @override
   String toString() {
-    return 'ProductScreenState(dataResponse: $dataResponse, displayedList: $displayedList, productCategories: $productCategories, selectedProductCategories: $selectedProductCategories, dataIsLoading: $dataIsLoading, currentListPage: $currentListPage)';
+    return 'ProductScreenState(dataResponse: $dataResponse, displayedList: $displayedList, productCategories: $productCategories, selectedProductCategories: $selectedProductCategories, filteringQuery: $filteringQuery, dataIsLoading: $dataIsLoading, currentListPage: $currentListPage)';
   }
 
   @override
@@ -242,6 +259,8 @@ class _$ProductScreenStateImpl implements _ProductScreenState {
                 .equals(other._productCategories, _productCategories) &&
             const DeepCollectionEquality().equals(
                 other._selectedProductCategories, _selectedProductCategories) &&
+            (identical(other.filteringQuery, filteringQuery) ||
+                other.filteringQuery == filteringQuery) &&
             (identical(other.dataIsLoading, dataIsLoading) ||
                 other.dataIsLoading == dataIsLoading) &&
             (identical(other.currentListPage, currentListPage) ||
@@ -255,6 +274,7 @@ class _$ProductScreenStateImpl implements _ProductScreenState {
       const DeepCollectionEquality().hash(_displayedList),
       const DeepCollectionEquality().hash(_productCategories),
       const DeepCollectionEquality().hash(_selectedProductCategories),
+      filteringQuery,
       dataIsLoading,
       currentListPage);
 
@@ -272,6 +292,7 @@ abstract class _ProductScreenState implements ProductScreenState {
       final List<ProductEntity> displayedList,
       final List<String> productCategories,
       final List<String> selectedProductCategories,
+      final String filteringQuery,
       final bool dataIsLoading,
       final int currentListPage}) = _$ProductScreenStateImpl;
 
@@ -283,6 +304,8 @@ abstract class _ProductScreenState implements ProductScreenState {
   List<String> get productCategories;
   @override
   List<String> get selectedProductCategories;
+  @override
+  String get filteringQuery;
   @override
   bool get dataIsLoading;
   @override

@@ -11,6 +11,7 @@ class ProductScreenState with _$ProductScreenState {
     @Default([]) List<ProductEntity> displayedList,
     @Default([]) List<String> productCategories,
     @Default([]) List<String> selectedProductCategories,
+    @Default('') String filteringQuery,
     @Default(true) bool dataIsLoading,
     @Default(0) int currentListPage,
   }) = _ProductScreenState;

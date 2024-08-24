@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 
 class ProductScreenAppBar extends StatelessWidget
     implements PreferredSizeWidget {
-  const ProductScreenAppBar({super.key});
+  final Function(String?)? onSearch;
+
+  const ProductScreenAppBar({
+    super.key,
+    required this.onSearch,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +23,21 @@ class ProductScreenAppBar extends StatelessWidget
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('All Products',style: Theme.of(context).textTheme.titleLarge,),
+              Text(
+                'All Products',
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
               const SizedBox(
                 height: 10,
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Expanded(
-                    child: TextFieldWidget(placeholder: 'Search'),
+                  Expanded(
+                    child: TextFieldWidget(
+                      placeholder: 'Search',
+                      onChange: onSearch,
+                    ),
                   ),
                   const SizedBox(
                     width: 10,

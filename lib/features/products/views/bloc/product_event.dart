@@ -9,6 +9,7 @@ sealed class ProductEvent with _$ProductEvent {
   factory ProductEvent.getNextPage() = GetNextPageEvent;
   factory ProductEvent.filterByCategory(String category) = FilterByCategoryEvent;
   factory ProductEvent.removeCategoryFromFilter(String category) = RemoveCategoryFromFilterEvent;
+  factory ProductEvent.searchByKeyWord(String search) = SearchByKeyWordEvent;
 
 
 }

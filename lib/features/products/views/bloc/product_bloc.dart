@@ -56,6 +56,11 @@ class ProductBloc extends Bloc<ProductEvent, ProductScreenState> {
                 state.selectedProductCategories.contains(item.category))
             .toList();
       }
+      if (state.filteringQuery.isNotEmpty) {
+        dataList = dataList
+            .where((product) => product.title.contains(state.filteringQuery))
+            .toList();
+      }
       if (nextDataIndex < dataList.length) {
         emitter(
           state.copyWith(
@@ -73,6 +78,9 @@ class ProductBloc extends Bloc<ProductEvent, ProductScreenState> {
     on<FilterByCategoryEvent>((event, emitter) {
       var dataList =
           (state.dataResponse as DataCompleted).data as List<ProductEntity>;
+      dataList = dataList
+          .where((product) => product.title.contains(state.filteringQuery))
+          .toList();
       var filteringCategories = [...state.selectedProductCategories];
       filteringCategories.add(event.category);
       var allFiltredProducts = dataList.where((item) {
@@ -80,15 +88,18 @@ class ProductBloc extends Bloc<ProductEvent, ProductScreenState> {
       });
       emitter(
         state.copyWith(
-          displayedList: allFiltredProducts.take(productListPageSize).toList(),
-          selectedProductCategories: filteringCategories,
-          currentListPage: 0
-        ),
+            displayedList:
+                allFiltredProducts.take(productListPageSize).toList(),
+            selectedProductCategories: filteringCategories,
+            currentListPage: 0),
       );
     });
     on<RemoveCategoryFromFilterEvent>((event, emitter) {
       var dataList =
           (state.dataResponse as DataCompleted).data as List<ProductEntity>;
+      dataList = dataList
+          .where((product) => product.title.contains(state.filteringQuery))
+          .toList();
       var filteringCategories = [...state.selectedProductCategories];
       filteringCategories.remove(event.category);
       List<ProductEntity> allFiltredProducts;
@@ -102,9 +113,37 @@ class ProductBloc extends Bloc<ProductEvent, ProductScreenState> {
 
       emitter(
         state.copyWith(
-          displayedList: allFiltredProducts.take(productListPageSize).toList(),
-          selectedProductCategories: filteringCategories,
-          currentListPage: 0
+            displayedList:
+                allFiltredProducts.take(productListPageSize).toList(),
+            selectedProductCategories: filteringCategories,
+            currentListPage: 0),
+      );
+    });
+
+    on<SearchByKeyWordEvent>((event, emitter) {
+      var dataList =
+          (state.dataResponse as DataCompleted).data as List<ProductEntity>;
+
+      if (state.selectedProductCategories.isNotEmpty) {
+        dataList = dataList
+            .where((product) =>
+                state.selectedProductCategories.contains(product.category))
+            .toList();
+      }
+
+      if (event.search.isNotEmpty) {
+        dataList = dataList
+            .where((product) => product.title
+                .toLowerCase()
+                .contains(event.search.toLowerCase()))
+            .toList();
+      }
+
+      emitter(
+        state.copyWith(
+          displayedList: dataList.take(productListPageSize).toList(),
+          filteringQuery: event.search,
+          currentListPage: 0,
         ),
       );
     });
