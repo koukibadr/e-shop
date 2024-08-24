@@ -18,7 +18,12 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ProductScreenState {
   DataResponse<List<ProductEntity>> get dataResponse =>
       throw _privateConstructorUsedError;
+  List<ProductEntity> get displayedList => throw _privateConstructorUsedError;
+  List<String> get productCategories => throw _privateConstructorUsedError;
+  List<String> get selectedProductCategories =>
+      throw _privateConstructorUsedError;
   bool get dataIsLoading => throw _privateConstructorUsedError;
+  int get currentListPage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductScreenStateCopyWith<ProductScreenState> get copyWith =>
@@ -32,7 +37,12 @@ abstract class $ProductScreenStateCopyWith<$Res> {
       _$ProductScreenStateCopyWithImpl<$Res, ProductScreenState>;
   @useResult
   $Res call(
-      {DataResponse<List<ProductEntity>> dataResponse, bool dataIsLoading});
+      {DataResponse<List<ProductEntity>> dataResponse,
+      List<ProductEntity> displayedList,
+      List<String> productCategories,
+      List<String> selectedProductCategories,
+      bool dataIsLoading,
+      int currentListPage});
 
   $DataResponseCopyWith<List<ProductEntity>, $Res> get dataResponse;
 }
@@ -51,17 +61,37 @@ class _$ProductScreenStateCopyWithImpl<$Res, $Val extends ProductScreenState>
   @override
   $Res call({
     Object? dataResponse = null,
+    Object? displayedList = null,
+    Object? productCategories = null,
+    Object? selectedProductCategories = null,
     Object? dataIsLoading = null,
+    Object? currentListPage = null,
   }) {
     return _then(_value.copyWith(
       dataResponse: null == dataResponse
           ? _value.dataResponse
           : dataResponse // ignore: cast_nullable_to_non_nullable
               as DataResponse<List<ProductEntity>>,
+      displayedList: null == displayedList
+          ? _value.displayedList
+          : displayedList // ignore: cast_nullable_to_non_nullable
+              as List<ProductEntity>,
+      productCategories: null == productCategories
+          ? _value.productCategories
+          : productCategories // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      selectedProductCategories: null == selectedProductCategories
+          ? _value.selectedProductCategories
+          : selectedProductCategories // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       dataIsLoading: null == dataIsLoading
           ? _value.dataIsLoading
           : dataIsLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      currentListPage: null == currentListPage
+          ? _value.currentListPage
+          : currentListPage // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 
@@ -84,7 +114,12 @@ abstract class _$$ProductScreenStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {DataResponse<List<ProductEntity>> dataResponse, bool dataIsLoading});
+      {DataResponse<List<ProductEntity>> dataResponse,
+      List<ProductEntity> displayedList,
+      List<String> productCategories,
+      List<String> selectedProductCategories,
+      bool dataIsLoading,
+      int currentListPage});
 
   @override
   $DataResponseCopyWith<List<ProductEntity>, $Res> get dataResponse;
@@ -102,17 +137,37 @@ class __$$ProductScreenStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? dataResponse = null,
+    Object? displayedList = null,
+    Object? productCategories = null,
+    Object? selectedProductCategories = null,
     Object? dataIsLoading = null,
+    Object? currentListPage = null,
   }) {
     return _then(_$ProductScreenStateImpl(
       dataResponse: null == dataResponse
           ? _value.dataResponse
           : dataResponse // ignore: cast_nullable_to_non_nullable
               as DataResponse<List<ProductEntity>>,
+      displayedList: null == displayedList
+          ? _value._displayedList
+          : displayedList // ignore: cast_nullable_to_non_nullable
+              as List<ProductEntity>,
+      productCategories: null == productCategories
+          ? _value._productCategories
+          : productCategories // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      selectedProductCategories: null == selectedProductCategories
+          ? _value._selectedProductCategories
+          : selectedProductCategories // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       dataIsLoading: null == dataIsLoading
           ? _value.dataIsLoading
           : dataIsLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      currentListPage: null == currentListPage
+          ? _value.currentListPage
+          : currentListPage // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -121,17 +176,57 @@ class __$$ProductScreenStateImplCopyWithImpl<$Res>
 
 class _$ProductScreenStateImpl implements _ProductScreenState {
   _$ProductScreenStateImpl(
-      {required this.dataResponse, this.dataIsLoading = true});
+      {required this.dataResponse,
+      final List<ProductEntity> displayedList = const [],
+      final List<String> productCategories = const [],
+      final List<String> selectedProductCategories = const [],
+      this.dataIsLoading = true,
+      this.currentListPage = 0})
+      : _displayedList = displayedList,
+        _productCategories = productCategories,
+        _selectedProductCategories = selectedProductCategories;
 
   @override
   final DataResponse<List<ProductEntity>> dataResponse;
+  final List<ProductEntity> _displayedList;
+  @override
+  @JsonKey()
+  List<ProductEntity> get displayedList {
+    if (_displayedList is EqualUnmodifiableListView) return _displayedList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_displayedList);
+  }
+
+  final List<String> _productCategories;
+  @override
+  @JsonKey()
+  List<String> get productCategories {
+    if (_productCategories is EqualUnmodifiableListView)
+      return _productCategories;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_productCategories);
+  }
+
+  final List<String> _selectedProductCategories;
+  @override
+  @JsonKey()
+  List<String> get selectedProductCategories {
+    if (_selectedProductCategories is EqualUnmodifiableListView)
+      return _selectedProductCategories;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_selectedProductCategories);
+  }
+
   @override
   @JsonKey()
   final bool dataIsLoading;
+  @override
+  @JsonKey()
+  final int currentListPage;
 
   @override
   String toString() {
-    return 'ProductScreenState(dataResponse: $dataResponse, dataIsLoading: $dataIsLoading)';
+    return 'ProductScreenState(dataResponse: $dataResponse, displayedList: $displayedList, productCategories: $productCategories, selectedProductCategories: $selectedProductCategories, dataIsLoading: $dataIsLoading, currentListPage: $currentListPage)';
   }
 
   @override
@@ -141,12 +236,27 @@ class _$ProductScreenStateImpl implements _ProductScreenState {
             other is _$ProductScreenStateImpl &&
             (identical(other.dataResponse, dataResponse) ||
                 other.dataResponse == dataResponse) &&
+            const DeepCollectionEquality()
+                .equals(other._displayedList, _displayedList) &&
+            const DeepCollectionEquality()
+                .equals(other._productCategories, _productCategories) &&
+            const DeepCollectionEquality().equals(
+                other._selectedProductCategories, _selectedProductCategories) &&
             (identical(other.dataIsLoading, dataIsLoading) ||
-                other.dataIsLoading == dataIsLoading));
+                other.dataIsLoading == dataIsLoading) &&
+            (identical(other.currentListPage, currentListPage) ||
+                other.currentListPage == currentListPage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, dataResponse, dataIsLoading);
+  int get hashCode => Object.hash(
+      runtimeType,
+      dataResponse,
+      const DeepCollectionEquality().hash(_displayedList),
+      const DeepCollectionEquality().hash(_productCategories),
+      const DeepCollectionEquality().hash(_selectedProductCategories),
+      dataIsLoading,
+      currentListPage);
 
   @JsonKey(ignore: true)
   @override
@@ -159,12 +269,24 @@ class _$ProductScreenStateImpl implements _ProductScreenState {
 abstract class _ProductScreenState implements ProductScreenState {
   factory _ProductScreenState(
       {required final DataResponse<List<ProductEntity>> dataResponse,
-      final bool dataIsLoading}) = _$ProductScreenStateImpl;
+      final List<ProductEntity> displayedList,
+      final List<String> productCategories,
+      final List<String> selectedProductCategories,
+      final bool dataIsLoading,
+      final int currentListPage}) = _$ProductScreenStateImpl;
 
   @override
   DataResponse<List<ProductEntity>> get dataResponse;
   @override
+  List<ProductEntity> get displayedList;
+  @override
+  List<String> get productCategories;
+  @override
+  List<String> get selectedProductCategories;
+  @override
   bool get dataIsLoading;
+  @override
+  int get currentListPage;
   @override
   @JsonKey(ignore: true)
   _$$ProductScreenStateImplCopyWith<_$ProductScreenStateImpl> get copyWith =>

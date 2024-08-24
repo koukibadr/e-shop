@@ -1,0 +1,1 @@
+int productListPageSize = 6;

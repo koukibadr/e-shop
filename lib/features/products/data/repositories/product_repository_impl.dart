@@ -17,8 +17,13 @@ class ProductRepositoryImpl implements ProductRepository {
     );
     try {
       var serverData = serverResponse.data['products'];
-      return DataResponse.completed(List<ProductModel>.from(
-          serverData.map((e) => ProductModel.fromJson(e))));
+      return DataResponse.completed(
+        List<ProductModel>.from(
+          serverData.map(
+            (e) => ProductModel.fromJson(e),
+          ),
+        ),
+      );
     } catch (e) {
       return DataResponse.error(
         serverResponse.statusCode ?? 0,

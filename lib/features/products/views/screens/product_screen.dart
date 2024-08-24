@@ -18,11 +18,20 @@ class ProductScreen extends StatefulWidget {
 }
 
 class _ProductScreenState extends State<ProductScreen> {
+  late ScrollController gridScrollController;
+
   @override
   void initState() {
     super.initState();
+    gridScrollController = ScrollController();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<ProductBloc>().add(ProductEvent());
+      context.read<ProductBloc>().add(GetAllProductsEvent());
+      gridScrollController.addListener(() {
+        if (gridScrollController.position.atEdge &&
+            gridScrollController.position.pixels != 0) {
+          context.read<ProductBloc>().add(GetNextPageEvent());
+        }
+      });
     });
   }
 
@@ -31,48 +40,83 @@ class _ProductScreenState extends State<ProductScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: const ProductScreenAppBar(),
-      body: BlocBuilder<ProductBloc, ProductScreenState>(
-        builder: (context, state) {
-          if (state.dataResponse is DataIsLoading) {
-            //TODO display loading widget
-            return Column(
-              children: [Expanded(child: const GridViewLoadingShimmer())],
-            );
-          } else if (state.dataResponse is DataError) {
-            //TODO display error message
-            return Column(
-              children: [Text('Error')],
-            );
-          } else {
-            var data = (state.dataResponse as DataCompleted).data
-                as List<ProductEntity>;
-            return Column(
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 20,
-                      horizontal: 10,
-                    ),
-                    child: GridView.builder(
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        childAspectRatio: 1.0,
-                        mainAxisSpacing: 30,
+      body: Column(
+        children: [
+          BlocBuilder<ProductBloc, ProductScreenState>(
+            builder: (context, state) {
+              if (state.dataResponse is DataIsLoading) {
+                return const Expanded(
+                  child: GridViewLoadingShimmer(),
+                );
+              } else if (state.dataResponse is DataError) {
+                return const Text('Error');
+              } else {
+                if (state.displayedList.isEmpty) {
+                  //TODO dsplay empty view
+                }
+                return Expanded(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 10,
+                        ),
+                        child: SizedBox(
+                          height: 40,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: state.productCategories.length,
+                            itemBuilder: (context, index) {
+                              var category = state.productCategories[index];
+                              return Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                child: ChoiceChip(
+                                  selected: state.selectedProductCategories.contains(category),
+                                  label: Text(category),
+                                  onSelected: (selected) {
+                                    if(selected){
+                                      context.read<ProductBloc>().add(FilterByCategoryEvent(category));
+                                    }else{
+                                      context.read<ProductBloc>().add(RemoveCategoryFromFilterEvent(category));
+                                    }
+                                  },
+                                ),
+                              );
+                            },
+                          ),
+                        ),
                       ),
-                      itemCount: data.length,
-                      itemBuilder: (context, index) {
-                        return ProductListItem(
-                          product: data[index],
-                        );
-                      },
-                    ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 20,
+                            horizontal: 10,
+                          ),
+                          child: GridView.builder(
+                            controller: gridScrollController,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              childAspectRatio: 1.0,
+                              mainAxisSpacing: 30,
+                            ),
+                            itemCount: state.displayedList.length,
+                            itemBuilder: (context, index) {
+                              return ProductListItem(
+                                product: state.displayedList[index],
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                )
-              ],
-            );
-          }
-        },
+                );
+              }
+            },
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},

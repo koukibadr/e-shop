@@ -8,6 +8,10 @@ part 'product_state.freezed.dart';
 class ProductScreenState with _$ProductScreenState {
   factory ProductScreenState({
     required DataResponse<List<ProductEntity>> dataResponse,
+    @Default([]) List<ProductEntity> displayedList,
+    @Default([]) List<String> productCategories,
+    @Default([]) List<String> selectedProductCategories,
     @Default(true) bool dataIsLoading,
+    @Default(0) int currentListPage,
   }) = _ProductScreenState;
 }
