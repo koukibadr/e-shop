@@ -16,7 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ProductScreenState {
-  List<ProductModel> get productModel => throw _privateConstructorUsedError;
+  DataResponse<List<ProductEntity>> get dataResponse =>
+      throw _privateConstructorUsedError;
+  bool get dataIsLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductScreenStateCopyWith<ProductScreenState> get copyWith =>
@@ -29,7 +31,10 @@ abstract class $ProductScreenStateCopyWith<$Res> {
           ProductScreenState value, $Res Function(ProductScreenState) then) =
       _$ProductScreenStateCopyWithImpl<$Res, ProductScreenState>;
   @useResult
-  $Res call({List<ProductModel> productModel});
+  $Res call(
+      {DataResponse<List<ProductEntity>> dataResponse, bool dataIsLoading});
+
+  $DataResponseCopyWith<List<ProductEntity>, $Res> get dataResponse;
 }
 
 /// @nodoc
@@ -45,14 +50,28 @@ class _$ProductScreenStateCopyWithImpl<$Res, $Val extends ProductScreenState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productModel = null,
+    Object? dataResponse = null,
+    Object? dataIsLoading = null,
   }) {
     return _then(_value.copyWith(
-      productModel: null == productModel
-          ? _value.productModel
-          : productModel // ignore: cast_nullable_to_non_nullable
-              as List<ProductModel>,
+      dataResponse: null == dataResponse
+          ? _value.dataResponse
+          : dataResponse // ignore: cast_nullable_to_non_nullable
+              as DataResponse<List<ProductEntity>>,
+      dataIsLoading: null == dataIsLoading
+          ? _value.dataIsLoading
+          : dataIsLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DataResponseCopyWith<List<ProductEntity>, $Res> get dataResponse {
+    return $DataResponseCopyWith<List<ProductEntity>, $Res>(_value.dataResponse,
+        (value) {
+      return _then(_value.copyWith(dataResponse: value) as $Val);
+    });
   }
 }
 
@@ -64,7 +83,11 @@ abstract class _$$ProductScreenStateImplCopyWith<$Res>
       __$$ProductScreenStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<ProductModel> productModel});
+  $Res call(
+      {DataResponse<List<ProductEntity>> dataResponse, bool dataIsLoading});
+
+  @override
+  $DataResponseCopyWith<List<ProductEntity>, $Res> get dataResponse;
 }
 
 /// @nodoc
@@ -78,13 +101,18 @@ class __$$ProductScreenStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productModel = null,
+    Object? dataResponse = null,
+    Object? dataIsLoading = null,
   }) {
     return _then(_$ProductScreenStateImpl(
-      productModel: null == productModel
-          ? _value._productModel
-          : productModel // ignore: cast_nullable_to_non_nullable
-              as List<ProductModel>,
+      dataResponse: null == dataResponse
+          ? _value.dataResponse
+          : dataResponse // ignore: cast_nullable_to_non_nullable
+              as DataResponse<List<ProductEntity>>,
+      dataIsLoading: null == dataIsLoading
+          ? _value.dataIsLoading
+          : dataIsLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -92,21 +120,18 @@ class __$$ProductScreenStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ProductScreenStateImpl implements _ProductScreenState {
-  _$ProductScreenStateImpl({final List<ProductModel> productModel = const []})
-      : _productModel = productModel;
+  _$ProductScreenStateImpl(
+      {required this.dataResponse, this.dataIsLoading = true});
 
-  final List<ProductModel> _productModel;
+  @override
+  final DataResponse<List<ProductEntity>> dataResponse;
   @override
   @JsonKey()
-  List<ProductModel> get productModel {
-    if (_productModel is EqualUnmodifiableListView) return _productModel;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_productModel);
-  }
+  final bool dataIsLoading;
 
   @override
   String toString() {
-    return 'ProductScreenState(productModel: $productModel)';
+    return 'ProductScreenState(dataResponse: $dataResponse, dataIsLoading: $dataIsLoading)';
   }
 
   @override
@@ -114,13 +139,14 @@ class _$ProductScreenStateImpl implements _ProductScreenState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductScreenStateImpl &&
-            const DeepCollectionEquality()
-                .equals(other._productModel, _productModel));
+            (identical(other.dataResponse, dataResponse) ||
+                other.dataResponse == dataResponse) &&
+            (identical(other.dataIsLoading, dataIsLoading) ||
+                other.dataIsLoading == dataIsLoading));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_productModel));
+  int get hashCode => Object.hash(runtimeType, dataResponse, dataIsLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -131,11 +157,14 @@ class _$ProductScreenStateImpl implements _ProductScreenState {
 }
 
 abstract class _ProductScreenState implements ProductScreenState {
-  factory _ProductScreenState({final List<ProductModel> productModel}) =
-      _$ProductScreenStateImpl;
+  factory _ProductScreenState(
+      {required final DataResponse<List<ProductEntity>> dataResponse,
+      final bool dataIsLoading}) = _$ProductScreenStateImpl;
 
   @override
-  List<ProductModel> get productModel;
+  DataResponse<List<ProductEntity>> get dataResponse;
+  @override
+  bool get dataIsLoading;
   @override
   @JsonKey(ignore: true)
   _$$ProductScreenStateImplCopyWith<_$ProductScreenStateImpl> get copyWith =>

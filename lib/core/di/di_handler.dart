@@ -3,7 +3,6 @@ import 'package:dummy_product/features/products/data/repositories/product_reposi
 import 'package:dummy_product/features/products/data/repositories/product_repository_impl.dart';
 import 'package:dummy_product/features/products/domain/usecases/get_product_usecase.dart';
 import 'package:dummy_product/features/products/views/bloc/product_bloc.dart';
-import 'package:dummy_product/features/products/views/bloc/product_state.dart';
 import 'package:get_it/get_it.dart';
 
 GetIt getItInstance = GetIt.instance;
