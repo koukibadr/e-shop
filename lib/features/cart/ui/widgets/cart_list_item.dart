@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dummy_product/core/widgets/confirmation_dialog.dart';
 import 'package:dummy_product/features/cart/domain/entities/cart_item_entity.dart';
-import 'package:dummy_product/features/products/views/widgets/quatity_widget.dart';
+import 'package:dummy_product/features/products/ui/widgets/quatity_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

@@ -4,9 +4,9 @@ import 'package:dummy_product/core/utilities/utility_functions.dart';
 import 'package:dummy_product/features/products/data/models/product_model.dart';
 import 'package:dummy_product/features/products/domain/entities/product_entity.dart';
 import 'package:dummy_product/features/products/domain/usecases/get_product_usecase.dart';
-import 'package:dummy_product/features/products/views/bloc/product_event.dart';
-import 'package:dummy_product/features/products/views/bloc/product_query.dart';
-import 'package:dummy_product/features/products/views/bloc/product_state.dart';
+import 'package:dummy_product/features/products/ui/bloc/product_event.dart';
+import 'package:dummy_product/features/products/ui/bloc/product_query.dart';
+import 'package:dummy_product/features/products/ui/bloc/product_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

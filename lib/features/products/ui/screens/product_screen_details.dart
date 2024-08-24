@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dummy_product/features/cart/views/bloc/cart_bloc.dart';
-import 'package:dummy_product/features/cart/views/bloc/cart_events.dart';
-import 'package:dummy_product/features/cart/views/bloc/cart_state.dart';
-import 'package:dummy_product/features/products/views/bloc/product_bloc.dart';
-import 'package:dummy_product/features/products/views/bloc/product_state.dart';
+import 'package:dummy_product/features/cart/ui/bloc/cart_bloc.dart';
+import 'package:dummy_product/features/cart/ui/bloc/cart_events.dart';
+import 'package:dummy_product/features/cart/ui/bloc/cart_state.dart';
+import 'package:dummy_product/features/products/ui/bloc/product_bloc.dart';
+import 'package:dummy_product/features/products/ui/bloc/product_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

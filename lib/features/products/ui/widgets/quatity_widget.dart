@@ -1,4 +1,4 @@
-import 'package:dummy_product/features/products/views/widgets/quantity_button.dart';
+import 'package:dummy_product/features/products/ui/widgets/quantity_button.dart';
 import 'package:flutter/material.dart';
 
 class QuantityWidget extends StatelessWidget {

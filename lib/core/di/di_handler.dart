@@ -1,9 +1,9 @@
 import 'package:dummy_product/core/api/api_handler.dart';
-import 'package:dummy_product/features/cart/views/bloc/cart_bloc.dart';
+import 'package:dummy_product/features/cart/ui/bloc/cart_bloc.dart';
 import 'package:dummy_product/features/products/data/repositories/product_repository.dart';
 import 'package:dummy_product/features/products/data/repositories/product_repository_impl.dart';
 import 'package:dummy_product/features/products/domain/usecases/get_product_usecase.dart';
-import 'package:dummy_product/features/products/views/bloc/product_bloc.dart';
+import 'package:dummy_product/features/products/ui/bloc/product_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 GetIt getItInstance = GetIt.instance;

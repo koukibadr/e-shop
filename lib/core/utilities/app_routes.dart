@@ -1,6 +1,6 @@
-import 'package:dummy_product/features/cart/views/screens/cart_screen.dart';
-import 'package:dummy_product/features/products/views/screens/product_screen.dart';
-import 'package:dummy_product/features/products/views/screens/product_screen_details.dart';
+import 'package:dummy_product/features/cart/ui/screens/cart_screen.dart';
+import 'package:dummy_product/features/products/ui/screens/product_screen.dart';
+import 'package:dummy_product/features/products/ui/screens/product_screen_details.dart';
 import 'package:go_router/go_router.dart';
 
 final appRoutes = GoRouter(
