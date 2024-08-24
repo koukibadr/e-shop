@@ -1,7 +1,19 @@
+import 'package:dummy_product/core/di/di_handler.dart';
+import 'package:dummy_product/features/products/views/bloc/product_bloc.dart';
+import 'package:dummy_product/features/products/views/screens/product_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  initializeDI();
+  runApp(MultiBlocProvider(
+    providers: [
+      BlocProvider(
+        create: (context) => getItInstance.get<ProductBloc>(),
+      ),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -18,7 +30,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const Scaffold(),
+      home: const ProductScreen(),
     );
   }
 }
