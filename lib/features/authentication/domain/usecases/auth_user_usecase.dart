@@ -9,7 +9,9 @@ class AuthenticateUserUseCase extends UseCase<DataResponse, AuthUserParams> {
 
   @override
   Future<DataResponse> call(AuthUserParams params) {
-    return repository.authenticateUser();
+    return repository.authenticateUser(
+      authenticationEntity: params.entity,
+    );
   }
 }
 

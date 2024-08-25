@@ -13,17 +13,23 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthScreenState> {
     on<UpdateAuthEntityEvent>((event, emitter) {
       emitter(
         state.copyWith(
-          authenticationEntity: event.entity,
-          authenticationResult: null
-        ),
+            authenticationEntity: event.entity, authenticationResult: null),
       );
     });
 
-    on<AuthenticateUserEvent>((event, emitter) {
+    on<AuthenticateUserEvent>((event, emitter) async {
       if (state.authenticationEntity.isValid) {
         emitter(
           state.copyWith(
             authenticationResult: DataIsLoading(),
+          ),
+        );
+        var authenticationResponse = await authenticateUserUseCase.call(
+          AuthUserParams(state.authenticationEntity),
+        );
+        emitter(
+          state.copyWith(
+            authenticationResult: authenticationResponse,
           ),
         );
       } else {

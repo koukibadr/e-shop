@@ -8,6 +8,7 @@ import 'package:dummy_product/features/products/data/repositories/product_reposi
 import 'package:dummy_product/features/products/data/repositories/product_repository_impl.dart';
 import 'package:dummy_product/features/products/domain/usecases/get_product_usecase.dart';
 import 'package:dummy_product/features/products/ui/bloc/product_bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 
 GetIt getItInstance = GetIt.instance;
@@ -22,7 +23,9 @@ void initializeDI() {
   );
 
   getItInstance.registerSingleton<AuthenticationRepository>(
-    AuthenticationRepositoryImpl(),
+    AuthenticationRepositoryImpl(
+      firebaseAuth: FirebaseAuth.instance,
+    ),
   );
 
   getItInstance.registerSingleton(

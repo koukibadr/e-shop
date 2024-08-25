@@ -11,4 +11,5 @@ sealed class AuthenticationEvent with _$AuthenticationEvent {
   ) = UpdateAuthEntityEvent;
 
   const factory AuthenticationEvent.authenticateUser() = AuthenticateUserEvent;
+  const factory AuthenticationEvent.authenticateAsGuest() = GuestAuthenticationEvent;
 }
