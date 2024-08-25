@@ -15,21 +15,12 @@ import 'package:vector_graphics/vector_graphics.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/empty_data.svg
-  SvgGenImage get emptyData =>
-      const SvgGenImage('assets/images/empty_data.svg');
-
-  /// File path: assets/images/online_shopping.svg
-  SvgGenImage get onlineShopping =>
-      const SvgGenImage('assets/images/online_shopping.svg');
-
   /// File path: assets/images/shopping_cart_illustration.svg
   SvgGenImage get shoppingCartIllustration =>
       const SvgGenImage('assets/images/shopping_cart_illustration.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values =>
-      [emptyData, onlineShopping, shoppingCartIllustration];
+  List<SvgGenImage> get values => [shoppingCartIllustration];
 }
 
 class $AssetsLogoGen {
