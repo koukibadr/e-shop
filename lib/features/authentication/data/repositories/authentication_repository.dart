@@ -4,4 +4,5 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class AuthenticationRepository {
   Future<DataResponse<UserCredential>> authenticateUser({required AuthenticationEntity authenticationEntity});
+  Future<DataResponse<UserCredential>> anonymousAuthentication();
 }

@@ -2,6 +2,7 @@ import 'package:dummy_product/features/authentication/ui/screens/authentication_
 import 'package:dummy_product/features/cart/ui/screens/cart_screen.dart';
 import 'package:dummy_product/features/products/ui/screens/product_screen.dart';
 import 'package:dummy_product/features/products/ui/screens/product_screen_details.dart';
+import 'package:dummy_product/features/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
 final appRoutes = GoRouter(
@@ -10,6 +11,10 @@ final appRoutes = GoRouter(
   routes: [
     GoRoute(
       path: '/',
+      builder: (context, state) => const SplashScreen(),
+    ),
+    GoRoute(
+      path: '/login',
       builder: (context, state) => const AuthenticationScreen(),
     ),
     GoRoute(

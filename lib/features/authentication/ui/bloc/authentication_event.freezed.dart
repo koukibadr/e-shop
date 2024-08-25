@@ -21,18 +21,21 @@ mixin _$AuthenticationEvent {
     required TResult Function(AuthenticationEntity entity)
         updateAuthenticationEntity,
     required TResult Function() authenticateUser,
+    required TResult Function() authenticateAsGuest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(AuthenticationEntity entity)? updateAuthenticationEntity,
     TResult? Function()? authenticateUser,
+    TResult? Function()? authenticateAsGuest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AuthenticationEntity entity)? updateAuthenticationEntity,
     TResult Function()? authenticateUser,
+    TResult Function()? authenticateAsGuest,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -41,18 +44,22 @@ mixin _$AuthenticationEvent {
     required TResult Function(UpdateAuthEntityEvent value)
         updateAuthenticationEntity,
     required TResult Function(AuthenticateUserEvent value) authenticateUser,
+    required TResult Function(GuestAuthenticationEvent value)
+        authenticateAsGuest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(UpdateAuthEntityEvent value)? updateAuthenticationEntity,
     TResult? Function(AuthenticateUserEvent value)? authenticateUser,
+    TResult? Function(GuestAuthenticationEvent value)? authenticateAsGuest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(UpdateAuthEntityEvent value)? updateAuthenticationEntity,
     TResult Function(AuthenticateUserEvent value)? authenticateUser,
+    TResult Function(GuestAuthenticationEvent value)? authenticateAsGuest,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -166,6 +173,7 @@ class _$UpdateAuthEntityEventImpl
     required TResult Function(AuthenticationEntity entity)
         updateAuthenticationEntity,
     required TResult Function() authenticateUser,
+    required TResult Function() authenticateAsGuest,
   }) {
     return updateAuthenticationEntity(entity);
   }
@@ -175,6 +183,7 @@ class _$UpdateAuthEntityEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(AuthenticationEntity entity)? updateAuthenticationEntity,
     TResult? Function()? authenticateUser,
+    TResult? Function()? authenticateAsGuest,
   }) {
     return updateAuthenticationEntity?.call(entity);
   }
@@ -184,6 +193,7 @@ class _$UpdateAuthEntityEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AuthenticationEntity entity)? updateAuthenticationEntity,
     TResult Function()? authenticateUser,
+    TResult Function()? authenticateAsGuest,
     required TResult orElse(),
   }) {
     if (updateAuthenticationEntity != null) {
@@ -198,6 +208,8 @@ class _$UpdateAuthEntityEventImpl
     required TResult Function(UpdateAuthEntityEvent value)
         updateAuthenticationEntity,
     required TResult Function(AuthenticateUserEvent value) authenticateUser,
+    required TResult Function(GuestAuthenticationEvent value)
+        authenticateAsGuest,
   }) {
     return updateAuthenticationEntity(this);
   }
@@ -207,6 +219,7 @@ class _$UpdateAuthEntityEventImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(UpdateAuthEntityEvent value)? updateAuthenticationEntity,
     TResult? Function(AuthenticateUserEvent value)? authenticateUser,
+    TResult? Function(GuestAuthenticationEvent value)? authenticateAsGuest,
   }) {
     return updateAuthenticationEntity?.call(this);
   }
@@ -216,6 +229,7 @@ class _$UpdateAuthEntityEventImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(UpdateAuthEntityEvent value)? updateAuthenticationEntity,
     TResult Function(AuthenticateUserEvent value)? authenticateUser,
+    TResult Function(GuestAuthenticationEvent value)? authenticateAsGuest,
     required TResult orElse(),
   }) {
     if (updateAuthenticationEntity != null) {
@@ -287,6 +301,7 @@ class _$AuthenticateUserEventImpl
     required TResult Function(AuthenticationEntity entity)
         updateAuthenticationEntity,
     required TResult Function() authenticateUser,
+    required TResult Function() authenticateAsGuest,
   }) {
     return authenticateUser();
   }
@@ -296,6 +311,7 @@ class _$AuthenticateUserEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(AuthenticationEntity entity)? updateAuthenticationEntity,
     TResult? Function()? authenticateUser,
+    TResult? Function()? authenticateAsGuest,
   }) {
     return authenticateUser?.call();
   }
@@ -305,6 +321,7 @@ class _$AuthenticateUserEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AuthenticationEntity entity)? updateAuthenticationEntity,
     TResult Function()? authenticateUser,
+    TResult Function()? authenticateAsGuest,
     required TResult orElse(),
   }) {
     if (authenticateUser != null) {
@@ -319,6 +336,8 @@ class _$AuthenticateUserEventImpl
     required TResult Function(UpdateAuthEntityEvent value)
         updateAuthenticationEntity,
     required TResult Function(AuthenticateUserEvent value) authenticateUser,
+    required TResult Function(GuestAuthenticationEvent value)
+        authenticateAsGuest,
   }) {
     return authenticateUser(this);
   }
@@ -328,6 +347,7 @@ class _$AuthenticateUserEventImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(UpdateAuthEntityEvent value)? updateAuthenticationEntity,
     TResult? Function(AuthenticateUserEvent value)? authenticateUser,
+    TResult? Function(GuestAuthenticationEvent value)? authenticateAsGuest,
   }) {
     return authenticateUser?.call(this);
   }
@@ -337,6 +357,7 @@ class _$AuthenticateUserEventImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(UpdateAuthEntityEvent value)? updateAuthenticationEntity,
     TResult Function(AuthenticateUserEvent value)? authenticateUser,
+    TResult Function(GuestAuthenticationEvent value)? authenticateAsGuest,
     required TResult orElse(),
   }) {
     if (authenticateUser != null) {
@@ -348,4 +369,128 @@ class _$AuthenticateUserEventImpl
 
 abstract class AuthenticateUserEvent implements AuthenticationEvent {
   const factory AuthenticateUserEvent() = _$AuthenticateUserEventImpl;
+}
+
+/// @nodoc
+abstract class _$$GuestAuthenticationEventImplCopyWith<$Res> {
+  factory _$$GuestAuthenticationEventImplCopyWith(
+          _$GuestAuthenticationEventImpl value,
+          $Res Function(_$GuestAuthenticationEventImpl) then) =
+      __$$GuestAuthenticationEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GuestAuthenticationEventImplCopyWithImpl<$Res>
+    extends _$AuthenticationEventCopyWithImpl<$Res,
+        _$GuestAuthenticationEventImpl>
+    implements _$$GuestAuthenticationEventImplCopyWith<$Res> {
+  __$$GuestAuthenticationEventImplCopyWithImpl(
+      _$GuestAuthenticationEventImpl _value,
+      $Res Function(_$GuestAuthenticationEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GuestAuthenticationEventImpl
+    with DiagnosticableTreeMixin
+    implements GuestAuthenticationEvent {
+  const _$GuestAuthenticationEventImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthenticationEvent.authenticateAsGuest()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(
+        DiagnosticsProperty('type', 'AuthenticationEvent.authenticateAsGuest'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GuestAuthenticationEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AuthenticationEntity entity)
+        updateAuthenticationEntity,
+    required TResult Function() authenticateUser,
+    required TResult Function() authenticateAsGuest,
+  }) {
+    return authenticateAsGuest();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AuthenticationEntity entity)? updateAuthenticationEntity,
+    TResult? Function()? authenticateUser,
+    TResult? Function()? authenticateAsGuest,
+  }) {
+    return authenticateAsGuest?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AuthenticationEntity entity)? updateAuthenticationEntity,
+    TResult Function()? authenticateUser,
+    TResult Function()? authenticateAsGuest,
+    required TResult orElse(),
+  }) {
+    if (authenticateAsGuest != null) {
+      return authenticateAsGuest();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UpdateAuthEntityEvent value)
+        updateAuthenticationEntity,
+    required TResult Function(AuthenticateUserEvent value) authenticateUser,
+    required TResult Function(GuestAuthenticationEvent value)
+        authenticateAsGuest,
+  }) {
+    return authenticateAsGuest(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(UpdateAuthEntityEvent value)? updateAuthenticationEntity,
+    TResult? Function(AuthenticateUserEvent value)? authenticateUser,
+    TResult? Function(GuestAuthenticationEvent value)? authenticateAsGuest,
+  }) {
+    return authenticateAsGuest?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UpdateAuthEntityEvent value)? updateAuthenticationEntity,
+    TResult Function(AuthenticateUserEvent value)? authenticateUser,
+    TResult Function(GuestAuthenticationEvent value)? authenticateAsGuest,
+    required TResult orElse(),
+  }) {
+    if (authenticateAsGuest != null) {
+      return authenticateAsGuest(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GuestAuthenticationEvent implements AuthenticationEvent {
+  const factory GuestAuthenticationEvent() = _$GuestAuthenticationEventImpl;
 }

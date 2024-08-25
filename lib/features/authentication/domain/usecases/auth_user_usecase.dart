@@ -4,12 +4,14 @@ import 'package:dummy_product/features/authentication/data/repositories/authenti
 import 'package:dummy_product/features/authentication/domain/entities/authentication_entity.dart';
 
 class AuthenticateUserUseCase extends UseCase<DataResponse, AuthUserParams> {
-  final AuthenticationRepository repository;
-  AuthenticateUserUseCase(this.repository);
+  final AuthenticationRepository authenticationRepository;
+  AuthenticateUserUseCase({
+    required this.authenticationRepository,
+  });
 
   @override
   Future<DataResponse> call(AuthUserParams params) {
-    return repository.authenticateUser(
+    return authenticationRepository.authenticateUser(
       authenticationEntity: params.entity,
     );
   }

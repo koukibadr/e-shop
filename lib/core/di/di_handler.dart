@@ -1,20 +1,27 @@
 import 'package:dummy_product/core/api/api_handler.dart';
+import 'package:dummy_product/core/session/secure_session_handler.dart';
+import 'package:dummy_product/core/session/secure_session_handler_impl.dart';
 import 'package:dummy_product/features/authentication/data/repositories/authentication_repository.dart';
 import 'package:dummy_product/features/authentication/data/repositories/authentication_repository_impl.dart';
 import 'package:dummy_product/features/authentication/domain/usecases/auth_user_usecase.dart';
+import 'package:dummy_product/features/authentication/domain/usecases/guest_auth_usecase.dart';
 import 'package:dummy_product/features/authentication/ui/bloc/authentication_bloc.dart';
 import 'package:dummy_product/features/cart/ui/bloc/cart_bloc.dart';
 import 'package:dummy_product/features/products/data/repositories/product_repository.dart';
 import 'package:dummy_product/features/products/data/repositories/product_repository_impl.dart';
 import 'package:dummy_product/features/products/domain/usecases/get_product_usecase.dart';
 import 'package:dummy_product/features/products/ui/bloc/product_bloc.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 
 GetIt getItInstance = GetIt.instance;
 
 void initializeDI() {
   getItInstance.registerSingleton<ApiHelper>(ApiHelper());
+  getItInstance
+      .registerSingleton<SecureSessionHandler>(SecureSessionHandlerImpl(
+    flutterSecureStorage: const FlutterSecureStorage(),
+  ));
 
   getItInstance.registerSingleton<ProductRepository>(
     ProductRepositoryImpl(
@@ -24,8 +31,7 @@ void initializeDI() {
 
   getItInstance.registerSingleton<AuthenticationRepository>(
     AuthenticationRepositoryImpl(
-      firebaseAuth: FirebaseAuth.instance,
-    ),
+        secureSessionHandler: getItInstance.get<SecureSessionHandler>()),
   );
 
   getItInstance.registerSingleton(
@@ -35,7 +41,15 @@ void initializeDI() {
   );
 
   getItInstance.registerSingleton<AuthenticateUserUseCase>(
-    AuthenticateUserUseCase(getItInstance.get<AuthenticationRepository>()),
+    AuthenticateUserUseCase(
+      authenticationRepository: getItInstance.get<AuthenticationRepository>(),
+    ),
+  );
+
+  getItInstance.registerSingleton<GuestAuthenticationUseCase>(
+    GuestAuthenticationUseCase(
+      authenticationRepository: getItInstance.get<AuthenticationRepository>(),
+    ),
   );
 
   getItInstance.registerFactory(
@@ -50,7 +64,9 @@ void initializeDI() {
 
   getItInstance.registerFactory<AuthenticationBloc>(
     () => AuthenticationBloc(
-      authenticateUserUseCase: getItInstance.get<AuthenticateUserUseCase>()
+      authenticateUserUseCase: getItInstance.get<AuthenticateUserUseCase>(),
+      guestAuthenticationUseCase:
+          getItInstance.get<GuestAuthenticationUseCase>(),
     ),
   );
 }

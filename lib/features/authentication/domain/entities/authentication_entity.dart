@@ -2,6 +2,7 @@ import 'package:dummy_product/core/utilities/constant_values.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'authentication_entity.freezed.dart';
+part 'authentication_entity.g.dart';
 
 @freezed
 class AuthenticationEntity with _$AuthenticationEntity {
@@ -12,6 +13,8 @@ class AuthenticationEntity with _$AuthenticationEntity {
     @Default('') String password,
   }) = _AuthenticationEntity;
 
+  factory AuthenticationEntity.fromJson(Map<String,dynamic> json) => _$AuthenticationEntityFromJson(json);
+
   bool get isValid =>
-      RegExp(emailRegexValue).hasMatch(email) && password.length > 8;
+      RegExp(emailRegexValue).hasMatch(email) && password.length >= 8;
 }

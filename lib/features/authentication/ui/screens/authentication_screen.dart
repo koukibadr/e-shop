@@ -7,6 +7,7 @@ import 'package:dummy_product/features/authentication/ui/bloc/authentication_eve
 import 'package:dummy_product/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class AuthenticationScreen extends StatelessWidget {
   const AuthenticationScreen({super.key});
@@ -17,17 +18,34 @@ class AuthenticationScreen extends StatelessWidget {
       body: SafeArea(
         child: BlocConsumer<AuthenticationBloc, AuthScreenState>(
           listenWhen: (previous, current) {
-            return previous.authenticationResult != current.authenticationResult;
+            return previous.authenticationResult !=
+                current.authenticationResult;
           },
           listener: (context, state) {
-            if(state.authenticationResult is FormError){
+            if (state.authenticationResult is FormError) {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Please verify all fields'))
+                const SnackBar(
+                  content: Text(
+                    'Please verify all fields',
+                  ),
+                ),
               );
             } else if (state.authenticationResult is DataIsLoading) {
               const LoadingPopup(
                 message: 'Authenticating User...',
               ).show(context);
+            } else if (state.authenticationResult is DataCompleted) {
+              GoRouter.of(context).pop();
+              GoRouter.of(context).go('/products');
+            } else if (state.authenticationResult is DataError) {
+              GoRouter.of(context).pop();
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text(
+                    'Error while authenticating try again later',
+                  ),
+                ),
+              );
             }
           },
           builder: (context, state) {
@@ -131,7 +149,9 @@ class AuthenticationScreen extends StatelessWidget {
                                       MediaQuery.of(context).size.width * 0.7,
                                   child: ElevatedButton(
                                     onPressed: () {
-                                      context.read<AuthenticationBloc>().add(AuthenticateUserEvent());
+                                      context
+                                          .read<AuthenticationBloc>()
+                                          .add(const AuthenticateUserEvent());
                                     },
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.blue,
@@ -147,13 +167,20 @@ class AuthenticationScreen extends StatelessWidget {
                                 const SizedBox(
                                   height: 10,
                                 ),
-                                const Text(
-                                  'Continue as a guest',
-                                  style: TextStyle(
-                                    color: Colors.amber,
-                                    decoration: TextDecoration.underline,
-                                    decorationColor: Colors.amber,
-                                    fontWeight: FontWeight.bold,
+                                InkWell(
+                                  onTap: () {
+                                    context
+                                        .read<AuthenticationBloc>()
+                                        .add(const GuestAuthenticationEvent());
+                                  },
+                                  child: const Text(
+                                    'Continue as a guest',
+                                    style: TextStyle(
+                                      color: Colors.amber,
+                                      decoration: TextDecoration.underline,
+                                      decorationColor: Colors.amber,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 )
                               ],

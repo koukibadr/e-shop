@@ -14,11 +14,16 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+AuthenticationEntity _$AuthenticationEntityFromJson(Map<String, dynamic> json) {
+  return _AuthenticationEntity.fromJson(json);
+}
+
 /// @nodoc
 mixin _$AuthenticationEntity {
   String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AuthenticationEntityCopyWith<AuthenticationEntity> get copyWith =>
       throw _privateConstructorUsedError;
@@ -102,10 +107,13 @@ class __$$AuthenticationEntityImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AuthenticationEntityImpl extends _AuthenticationEntity {
   const _$AuthenticationEntityImpl({this.email = '', this.password = ''})
       : super._();
+
+  factory _$AuthenticationEntityImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AuthenticationEntityImplFromJson(json);
 
   @override
   @JsonKey()
@@ -129,6 +137,7 @@ class _$AuthenticationEntityImpl extends _AuthenticationEntity {
                 other.password == password));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, email, password);
 
@@ -139,12 +148,22 @@ class _$AuthenticationEntityImpl extends _AuthenticationEntity {
       get copyWith =>
           __$$AuthenticationEntityImplCopyWithImpl<_$AuthenticationEntityImpl>(
               this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AuthenticationEntityImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _AuthenticationEntity extends AuthenticationEntity {
   const factory _AuthenticationEntity(
       {final String email, final String password}) = _$AuthenticationEntityImpl;
   const _AuthenticationEntity._() : super._();
+
+  factory _AuthenticationEntity.fromJson(Map<String, dynamic> json) =
+      _$AuthenticationEntityImpl.fromJson;
 
   @override
   String get email;
