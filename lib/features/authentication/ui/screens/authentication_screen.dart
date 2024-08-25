@@ -1,4 +1,5 @@
 import 'package:e_shop/core/utilities/data_response.dart';
+import 'package:e_shop/core/utilities/extensions.dart';
 import 'package:e_shop/core/widgets/loading_popup.dart';
 import 'package:e_shop/core/widgets/text_field_widget.dart';
 import 'package:e_shop/features/authentication/ui/bloc/auth_screen_state.dart';
@@ -24,15 +25,15 @@ class AuthenticationScreen extends StatelessWidget {
           listener: (context, state) {
             if (state.authenticationResult is FormError) {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
+                SnackBar(
                   content: Text(
-                    'Please verify all fields',
+                    context.localization.fillAllFields,
                   ),
                 ),
               );
             } else if (state.authenticationResult is DataIsLoading) {
-              const LoadingPopup(
-                message: 'Authenticating User...',
+              LoadingPopup(
+                message: context.localization.authUser,
               ).show(context);
             } else if (state.authenticationResult is DataCompleted) {
               GoRouter.of(context).pop();
@@ -40,9 +41,9 @@ class AuthenticationScreen extends StatelessWidget {
             } else if (state.authenticationResult is DataError) {
               GoRouter.of(context).pop();
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
+                SnackBar(
                   content: Text(
-                    'Error while authenticating try again later',
+                    context.localization.authError,
                   ),
                 ),
               );
@@ -81,7 +82,7 @@ class AuthenticationScreen extends StatelessWidget {
                                   width: 10,
                                 ),
                                 Text(
-                                  'Login',
+                                  context.localization.login,
                                   style: Theme.of(context)
                                       .textTheme
                                       .headlineLarge
@@ -97,7 +98,7 @@ class AuthenticationScreen extends StatelessWidget {
                                     MediaQuery.of(context).size.width * 0.6,
                               ),
                               child: Text(
-                                'Enter below your credentials to continue shopping',
+                                context.localization.loginDescription,
                                 style: Theme.of(context).textTheme.bodyMedium,
                               ),
                             ),
@@ -107,7 +108,7 @@ class AuthenticationScreen extends StatelessWidget {
                             Column(
                               children: [
                                 TextFieldWidget(
-                                  placeholder: 'E-mail',
+                                  placeholder: context.localization.email,
                                   prefixIcon: Icons.mail_outline_outlined,
                                   height: 50,
                                   borderRadius: 5,
@@ -129,7 +130,8 @@ class AuthenticationScreen extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     TextFieldWidget(
-                                      placeholder: 'Password',
+                                      placeholder:
+                                          context.localization.password,
                                       prefixIcon: Icons.lock_open_sharp,
                                       height: 50,
                                       borderRadius: 5,
@@ -150,9 +152,9 @@ class AuthenticationScreen extends StatelessWidget {
                                       onTap: () {
                                         GoRouter.of(context).push('/register');
                                       },
-                                      child: const Text(
-                                        'Create a new account',
-                                        style: TextStyle(
+                                      child: Text(
+                                        context.localization.createAccount,
+                                        style: const TextStyle(
                                           color: Colors.amber,
                                           decoration: TextDecoration.underline,
                                           decorationColor: Colors.amber,
@@ -177,9 +179,9 @@ class AuthenticationScreen extends StatelessWidget {
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.blue,
                                     ),
-                                    child: const Text(
-                                      'Authenticate',
-                                      style: TextStyle(
+                                    child: Text(
+                                      context.localization.authenticate,
+                                      style: const TextStyle(
                                         color: Colors.white,
                                       ),
                                     ),
@@ -194,9 +196,9 @@ class AuthenticationScreen extends StatelessWidget {
                                         .read<AuthenticationBloc>()
                                         .add(const GuestAuthenticationEvent());
                                   },
-                                  child: const Text(
-                                    'Continue as a guest',
-                                    style: TextStyle(
+                                  child: Text(
+                                    context.localization.continueAsGuest,
+                                    style: const TextStyle(
                                       color: Colors.amber,
                                       decoration: TextDecoration.underline,
                                       decorationColor: Colors.amber,

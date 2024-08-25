@@ -1,4 +1,5 @@
 import 'package:e_shop/core/utilities/data_response.dart';
+import 'package:e_shop/core/utilities/extensions.dart';
 import 'package:e_shop/core/widgets/loading_popup.dart';
 import 'package:e_shop/core/widgets/text_field_widget.dart';
 import 'package:e_shop/features/register/ui/bloc/register_bloc.dart';
@@ -23,15 +24,15 @@ class RegisterationScreen extends StatelessWidget {
           listener: (context, state) {
             if (state.registerationResult is FormError) {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
+                SnackBar(
                   content: Text(
-                    'Please verify all fields',
+                    context.localization.fillAllFields,
                   ),
                 ),
               );
             } else if (state.registerationResult is DataIsLoading) {
-              const LoadingPopup(
-                message: 'Authenticating User...',
+              LoadingPopup(
+                message: context.localization.registeringUser,
               ).show(context);
             } else if (state.registerationResult is DataCompleted) {
               GoRouter.of(context).pop();
@@ -39,10 +40,8 @@ class RegisterationScreen extends StatelessWidget {
             } else if (state.registerationResult is DataError) {
               GoRouter.of(context).pop();
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text(
-                    'Error while creating a new account try again later',
-                  ),
+                SnackBar(
+                  content: Text(context.localization.registerError),
                 ),
               );
             }
@@ -80,7 +79,7 @@ class RegisterationScreen extends StatelessWidget {
                                   width: 10,
                                 ),
                                 Text(
-                                  'Registration',
+                                  context.localization.register,
                                   style: Theme.of(context)
                                       .textTheme
                                       .headlineLarge
@@ -96,7 +95,7 @@ class RegisterationScreen extends StatelessWidget {
                                     MediaQuery.of(context).size.width * 0.6,
                               ),
                               child: Text(
-                                'Create a new account and get all newest products',
+                                context.localization.registerDescription,
                                 style: Theme.of(context).textTheme.bodyMedium,
                               ),
                             ),
@@ -106,7 +105,7 @@ class RegisterationScreen extends StatelessWidget {
                             Column(
                               children: [
                                 TextFieldWidget(
-                                  placeholder: 'E-mail',
+                                  placeholder: context.localization.email,
                                   prefixIcon: Icons.mail_outline_outlined,
                                   height: 50,
                                   borderRadius: 5,
@@ -125,7 +124,7 @@ class RegisterationScreen extends StatelessWidget {
                                   height: 10,
                                 ),
                                 TextFieldWidget(
-                                  placeholder: 'Password',
+                                  placeholder: context.localization.password,
                                   prefixIcon: Icons.lock_open_sharp,
                                   height: 50,
                                   borderRadius: 5,
@@ -156,9 +155,9 @@ class RegisterationScreen extends StatelessWidget {
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.blue,
                                     ),
-                                    child: const Text(
-                                      'Authenticate',
-                                      style: TextStyle(
+                                    child: Text(
+                                      context.localization.createAccount,
+                                      style: const TextStyle(
                                         color: Colors.white,
                                       ),
                                     ),

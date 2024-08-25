@@ -1,3 +1,4 @@
+import 'package:e_shop/core/utilities/extensions.dart';
 import 'package:e_shop/core/widgets/text_field_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ class ProductScreenAppBar extends StatelessWidget
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        color: Color(0xFFF6F6F6),
+        color: const Color(0xFFF6F6F6),
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 20,
@@ -26,10 +27,10 @@ class ProductScreenAppBar extends StatelessWidget
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'All Products',
+                context.localization.allProducts,
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
               const SizedBox(
                 height: 10,
@@ -39,7 +40,7 @@ class ProductScreenAppBar extends StatelessWidget
                 children: [
                   Expanded(
                     child: TextFieldWidget(
-                      placeholder: 'Search',
+                      placeholder: context.localization.search,
                       onChange: onSearch,
                     ),
                   ),

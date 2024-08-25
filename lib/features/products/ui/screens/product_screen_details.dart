@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_shop/core/utilities/extensions.dart';
 import 'package:e_shop/features/cart/ui/bloc/cart_bloc.dart';
 import 'package:e_shop/features/cart/ui/bloc/cart_events.dart';
 import 'package:e_shop/features/cart/ui/bloc/cart_state.dart';
@@ -155,8 +156,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                     ),
                                     Text(
                                       productExist
-                                          ? 'Remove from cart'
-                                          : 'Add to cart',
+                                          ? context.localization.removeFromCart
+                                          : context.localization.addToCart,
                                       style: const TextStyle(
                                         color: Colors.white,
                                       ),

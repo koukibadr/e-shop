@@ -14,7 +14,8 @@ class RegistrationRepositoryImpl extends RegistrationRepository {
     AuthenticationEntity entity,
   ) async {
     try {
-      final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      final credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: entity.email,
         password: entity.password,
       );

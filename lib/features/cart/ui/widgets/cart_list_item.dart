@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_shop/core/utilities/extensions.dart';
 import 'package:e_shop/core/widgets/confirmation_dialog.dart';
 import 'package:e_shop/features/cart/domain/entities/cart_item_entity.dart';
 import 'package:e_shop/features/products/ui/widgets/quatity_widget.dart';
@@ -74,8 +75,7 @@ class CartListItem extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       ConfirmationDialog(
-                        description:
-                            'Would you like to remove this product from cart ?',
+                        description: context.localization.cartDeletionConfirm,
                         onConfirm: () {
                           GoRouter.of(context).pop();
                           onItemRemoved.call();

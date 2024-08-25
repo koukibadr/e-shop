@@ -5,11 +5,8 @@ part 'cart_item_entity.freezed.dart';
 
 @freezed
 class CartItemEntity with _$CartItemEntity {
-  
   factory CartItemEntity({
     @Default(1) int quantity,
     required ProductEntity product,
   }) = _CartItemEntity;
-
-
 }

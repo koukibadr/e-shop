@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class QuantityButton extends StatelessWidget {
   final bool isIncrement;
   final Function()? onTap;
-  
+
   const QuantityButton({
+    super.key,
     required this.isIncrement,
     required this.onTap,
   });

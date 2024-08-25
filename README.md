@@ -1,16 +1,13 @@
-# dummy_product
-
-A new Flutter project.
+# E-Shop
+A mock Flutter project to display products.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To Run the project you have two ways to do it:
+- use launch.json vscode file: Run the project using vscode launch feature to inject the dummyjson base url into the code
+- use `flutter run --dart-define BASEURL=https://dummyjson.com` to inject the base url into the code
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+**Why ?**
+In order to have more clear and performant project:
+- Have less hard coded strings
+- th Use runtime variables to support multi-flavor projects

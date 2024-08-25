@@ -1,3 +1,4 @@
+import 'package:e_shop/core/utilities/extensions.dart';
 import 'package:e_shop/features/cart/ui/bloc/cart_bloc.dart';
 import 'package:e_shop/features/cart/ui/bloc/cart_events.dart';
 import 'package:e_shop/features/cart/ui/bloc/cart_state.dart';
@@ -19,9 +20,9 @@ class _CartScreenState extends State<CartScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: const Text(
-          'Your cart',
-          style: TextStyle(
+        title: Text(
+          context.localization.yourCart,
+          style: const TextStyle(
             color: Colors.white,
           ),
         ),
@@ -32,8 +33,9 @@ class _CartScreenState extends State<CartScreen> {
             child: BlocBuilder<CartBloc, CartScreenState>(
               builder: (context, state) {
                 if (state.cartItems.isEmpty) {
-                  //TODO display empty widget
-                  return Container();
+                  return Center(
+                    child: Text(context.localization.cartEmpty),
+                  );
                 }
                 return SearchableList(
                   initialList: state.cartItems,
@@ -66,8 +68,8 @@ class _CartScreenState extends State<CartScreen> {
                         )
                         .toList();
                   },
-                  inputDecoration: const InputDecoration(
-                    hintText: 'Search',
+                  inputDecoration: InputDecoration(
+                    hintText: context.localization.search,
                   ),
                   displaySearchIcon: false,
                 );
@@ -89,18 +91,18 @@ class _CartScreenState extends State<CartScreen> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
                     ),
-                    child: const Row(
+                    child: Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.credit_card,
                           color: Colors.white,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Text(
-                          'Continue to payment',
-                          style: TextStyle(
+                          context.localization.continueToPayment,
+                          style: const TextStyle(
                             color: Colors.white,
                           ),
                         ),

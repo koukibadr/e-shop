@@ -13,7 +13,8 @@ class AuthenticationEntity with _$AuthenticationEntity {
     @Default('') String password,
   }) = _AuthenticationEntity;
 
-  factory AuthenticationEntity.fromJson(Map<String,dynamic> json) => _$AuthenticationEntityFromJson(json);
+  factory AuthenticationEntity.fromJson(Map<String, dynamic> json) =>
+      _$AuthenticationEntityFromJson(json);
 
   bool get isValid =>
       RegExp(emailRegexValue).hasMatch(email) && password.length >= 8;

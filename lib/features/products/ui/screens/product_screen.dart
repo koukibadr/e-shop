@@ -1,4 +1,5 @@
 import 'package:e_shop/core/utilities/data_response.dart';
+import 'package:e_shop/core/utilities/extensions.dart';
 import 'package:e_shop/features/products/ui/bloc/product_bloc.dart';
 import 'package:e_shop/features/products/ui/bloc/product_event.dart';
 import 'package:e_shop/features/products/ui/bloc/product_state.dart';
@@ -61,10 +62,10 @@ class _ProductScreenState extends State<ProductScreen> {
                     child: GridViewLoadingShimmer(),
                   );
                 } else if (state.dataResponse is DataError) {
-                  return const Text('Error');
+                  return Text(context.localization.errorProduct);
                 } else {
                   if (state.displayedList.isEmpty) {
-                    //TODO dsplay empty view
+                    return Text(context.localization.noProducts);
                   }
                   return Expanded(
                     child: Column(
@@ -85,8 +86,8 @@ class _ProductScreenState extends State<ProductScreen> {
                                     horizontal: 10,
                                   ),
                                   child: ChoiceChip(
-                                    selected:
-                                        state.query.categories.contains(category),
+                                    selected: state.query.categories
+                                        .contains(category),
                                     label: Text(category),
                                     onSelected: (selected) {
                                       if (selected) {

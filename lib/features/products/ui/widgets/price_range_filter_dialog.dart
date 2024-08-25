@@ -1,3 +1,4 @@
+import 'package:e_shop/core/utilities/extensions.dart';
 import 'package:flutter/material.dart';
 
 class PriceRangeFilterDialog extends StatefulWidget {
@@ -31,7 +32,6 @@ class PriceRangeFilterDialog extends StatefulWidget {
 }
 
 class _PriceRangeFilterDialogState extends State<PriceRangeFilterDialog> {
-
   late RangeValues rangeValues = widget.rangeValues;
 
   @override
@@ -51,7 +51,7 @@ class _PriceRangeFilterDialogState extends State<PriceRangeFilterDialog> {
                   children: [
                     Expanded(
                       child: Text(
-                        'Select the price interval',
+                        context.localization.selectPriceInterval,
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
@@ -59,15 +59,16 @@ class _PriceRangeFilterDialogState extends State<PriceRangeFilterDialog> {
                     ),
                     InkWell(
                       onTap: () {
-                        var defaultPriceRange = RangeValues(widget.minPrice, widget.maxPrice);
+                        var defaultPriceRange =
+                            RangeValues(widget.minPrice, widget.maxPrice);
                         widget.onPriceChanged(defaultPriceRange);
                         setState(() {
                           rangeValues = defaultPriceRange;
                         });
                       },
-                      child: const Text(
-                        'Reset all',
-                        style: TextStyle(
+                      child: Text(
+                        context.localization.resetAll,
+                        style: const TextStyle(
                           decoration: TextDecoration.underline,
                           color: Colors.orange,
                         ),
@@ -103,7 +104,8 @@ class _PriceRangeFilterDialogState extends State<PriceRangeFilterDialog> {
                                 widget.onPriceChanged.call(value);
                                 setState(() {
                                   rangeValues = RangeValues(
-                                    double.parse(value.start.toStringAsFixed(2)),
+                                    double.parse(
+                                        value.start.toStringAsFixed(2)),
                                     double.parse(value.end.toStringAsFixed(2)),
                                   );
                                 });
@@ -122,10 +124,6 @@ class _PriceRangeFilterDialogState extends State<PriceRangeFilterDialog> {
                     ),
                   ],
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const Text('Apply Filter'),
-                )
               ],
             ),
           )

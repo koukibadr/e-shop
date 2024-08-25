@@ -6,10 +6,10 @@ class QuantityWidget extends StatelessWidget {
   final int initialQuantity;
 
   const QuantityWidget({
-    Key? key,
+    super.key,
     required this.onQuantityChanged,
     this.initialQuantity = 0,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

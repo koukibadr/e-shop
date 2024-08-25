@@ -5,7 +5,6 @@ part 'product_entity.g.dart';
 
 @freezed
 class ProductEntity with _$ProductEntity {
-  
   factory ProductEntity({
     required int id,
     required String title,
@@ -18,6 +17,6 @@ class ProductEntity with _$ProductEntity {
     required bool isNew,
   }) = _ProductEntity;
 
-  factory ProductEntity.fromJson(Map<String,dynamic> json) => _$ProductEntityFromJson(json);
-
+  factory ProductEntity.fromJson(Map<String, dynamic> json) =>
+      _$ProductEntityFromJson(json);
 }

@@ -6,7 +6,6 @@ part 'product_model.g.dart';
 
 @freezed
 class ProductModel with _$ProductModel {
-
   const ProductModel._();
 
   factory ProductModel({
@@ -28,7 +27,7 @@ class ProductModel with _$ProductModel {
   factory ProductModel.fromJson(Map<String, dynamic> json) =>
       _$ProductModelFromJson(json);
 
-  ProductEntity toEntity({required DateTime productDate,required bool isNew}) {
+  ProductEntity toEntity({required DateTime productDate, required bool isNew}) {
     return ProductEntity(
       id: id,
       title: title,
@@ -43,15 +42,13 @@ class ProductModel with _$ProductModel {
   }
 }
 
-
 @freezed
 class ProductMeta with _$ProductMeta {
-
   factory ProductMeta({
     required String createdAt,
     required String updatedAt,
   }) = _ProductMeta;
 
-  factory ProductMeta.fromJson(Map<String,dynamic> json) => _$ProductMetaFromJson(json);
-
+  factory ProductMeta.fromJson(Map<String, dynamic> json) =>
+      _$ProductMetaFromJson(json);
 }

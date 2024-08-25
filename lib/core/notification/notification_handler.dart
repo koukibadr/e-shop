@@ -26,9 +26,8 @@ class NotificationHandler {
 
   void displayNotification(String title, String message) async {
     NotificationDetails notificationDetails = NotificationDetails(
-      android: androidNotificationDetails,
-      iOS: const DarwinNotificationDetails()
-    );
+        android: androidNotificationDetails,
+        iOS: const DarwinNotificationDetails());
     await flutterLocalNotificationsPlugin.show(
       0,
       title,
