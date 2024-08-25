@@ -1,4 +1,8 @@
 import 'package:dummy_product/core/api/api_handler.dart';
+import 'package:dummy_product/features/authentication/data/repositories/authentication_repository.dart';
+import 'package:dummy_product/features/authentication/data/repositories/authentication_repository_impl.dart';
+import 'package:dummy_product/features/authentication/domain/usecases/auth_user_usecase.dart';
+import 'package:dummy_product/features/authentication/ui/bloc/authentication_bloc.dart';
 import 'package:dummy_product/features/cart/ui/bloc/cart_bloc.dart';
 import 'package:dummy_product/features/products/data/repositories/product_repository.dart';
 import 'package:dummy_product/features/products/data/repositories/product_repository_impl.dart';
@@ -17,10 +21,18 @@ void initializeDI() {
     ),
   );
 
+  getItInstance.registerSingleton<AuthenticationRepository>(
+    AuthenticationRepositoryImpl(),
+  );
+
   getItInstance.registerSingleton(
     GetProductUseCase(
       productRepository: getItInstance.get<ProductRepository>(),
     ),
+  );
+
+  getItInstance.registerSingleton<AuthenticateUserUseCase>(
+    AuthenticateUserUseCase(getItInstance.get<AuthenticationRepository>()),
   );
 
   getItInstance.registerFactory(
@@ -31,5 +43,11 @@ void initializeDI() {
 
   getItInstance.registerFactory(
     () => CartBloc(),
+  );
+
+  getItInstance.registerFactory<AuthenticationBloc>(
+    () => AuthenticationBloc(
+      authenticateUserUseCase: getItInstance.get<AuthenticateUserUseCase>()
+    ),
   );
 }

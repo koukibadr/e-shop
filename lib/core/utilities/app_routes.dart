@@ -1,3 +1,4 @@
+import 'package:dummy_product/features/authentication/ui/screens/authentication_screen.dart';
 import 'package:dummy_product/features/cart/ui/screens/cart_screen.dart';
 import 'package:dummy_product/features/products/ui/screens/product_screen.dart';
 import 'package:dummy_product/features/products/ui/screens/product_screen_details.dart';
@@ -9,6 +10,10 @@ final appRoutes = GoRouter(
   routes: [
     GoRoute(
       path: '/',
+      builder: (context, state) => const AuthenticationScreen(),
+    ),
+    GoRoute(
+      path: '/products',
       builder: (context, state) => const ProductScreen(),
     ),
     GoRoute(

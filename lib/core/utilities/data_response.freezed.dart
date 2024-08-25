@@ -21,6 +21,7 @@ mixin _$DataResponse<T> {
     required TResult Function(T data) completed,
     required TResult Function() loading,
     required TResult Function(int errorCode, String message) error,
+    required TResult Function() formError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$DataResponse<T> {
     TResult? Function(T data)? completed,
     TResult? Function()? loading,
     TResult? Function(int errorCode, String message)? error,
+    TResult? Function()? formError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$DataResponse<T> {
     TResult Function(T data)? completed,
     TResult Function()? loading,
     TResult Function(int errorCode, String message)? error,
+    TResult Function()? formError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$DataResponse<T> {
     required TResult Function(DataCompleted<T> value) completed,
     required TResult Function(DataIsLoading<T> value) loading,
     required TResult Function(DataError<T> value) error,
+    required TResult Function(FormError<T> value) formError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$DataResponse<T> {
     TResult? Function(DataCompleted<T> value)? completed,
     TResult? Function(DataIsLoading<T> value)? loading,
     TResult? Function(DataError<T> value)? error,
+    TResult? Function(FormError<T> value)? formError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$DataResponse<T> {
     TResult Function(DataCompleted<T> value)? completed,
     TResult Function(DataIsLoading<T> value)? loading,
     TResult Function(DataError<T> value)? error,
+    TResult Function(FormError<T> value)? formError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -149,6 +155,7 @@ class _$DataCompletedImpl<T> implements DataCompleted<T> {
     required TResult Function(T data) completed,
     required TResult Function() loading,
     required TResult Function(int errorCode, String message) error,
+    required TResult Function() formError,
   }) {
     return completed(data);
   }
@@ -159,6 +166,7 @@ class _$DataCompletedImpl<T> implements DataCompleted<T> {
     TResult? Function(T data)? completed,
     TResult? Function()? loading,
     TResult? Function(int errorCode, String message)? error,
+    TResult? Function()? formError,
   }) {
     return completed?.call(data);
   }
@@ -169,6 +177,7 @@ class _$DataCompletedImpl<T> implements DataCompleted<T> {
     TResult Function(T data)? completed,
     TResult Function()? loading,
     TResult Function(int errorCode, String message)? error,
+    TResult Function()? formError,
     required TResult orElse(),
   }) {
     if (completed != null) {
@@ -183,6 +192,7 @@ class _$DataCompletedImpl<T> implements DataCompleted<T> {
     required TResult Function(DataCompleted<T> value) completed,
     required TResult Function(DataIsLoading<T> value) loading,
     required TResult Function(DataError<T> value) error,
+    required TResult Function(FormError<T> value) formError,
   }) {
     return completed(this);
   }
@@ -193,6 +203,7 @@ class _$DataCompletedImpl<T> implements DataCompleted<T> {
     TResult? Function(DataCompleted<T> value)? completed,
     TResult? Function(DataIsLoading<T> value)? loading,
     TResult? Function(DataError<T> value)? error,
+    TResult? Function(FormError<T> value)? formError,
   }) {
     return completed?.call(this);
   }
@@ -203,6 +214,7 @@ class _$DataCompletedImpl<T> implements DataCompleted<T> {
     TResult Function(DataCompleted<T> value)? completed,
     TResult Function(DataIsLoading<T> value)? loading,
     TResult Function(DataError<T> value)? error,
+    TResult Function(FormError<T> value)? formError,
     required TResult orElse(),
   }) {
     if (completed != null) {
@@ -262,6 +274,7 @@ class _$DataIsLoadingImpl<T> implements DataIsLoading<T> {
     required TResult Function(T data) completed,
     required TResult Function() loading,
     required TResult Function(int errorCode, String message) error,
+    required TResult Function() formError,
   }) {
     return loading();
   }
@@ -272,6 +285,7 @@ class _$DataIsLoadingImpl<T> implements DataIsLoading<T> {
     TResult? Function(T data)? completed,
     TResult? Function()? loading,
     TResult? Function(int errorCode, String message)? error,
+    TResult? Function()? formError,
   }) {
     return loading?.call();
   }
@@ -282,6 +296,7 @@ class _$DataIsLoadingImpl<T> implements DataIsLoading<T> {
     TResult Function(T data)? completed,
     TResult Function()? loading,
     TResult Function(int errorCode, String message)? error,
+    TResult Function()? formError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -296,6 +311,7 @@ class _$DataIsLoadingImpl<T> implements DataIsLoading<T> {
     required TResult Function(DataCompleted<T> value) completed,
     required TResult Function(DataIsLoading<T> value) loading,
     required TResult Function(DataError<T> value) error,
+    required TResult Function(FormError<T> value) formError,
   }) {
     return loading(this);
   }
@@ -306,6 +322,7 @@ class _$DataIsLoadingImpl<T> implements DataIsLoading<T> {
     TResult? Function(DataCompleted<T> value)? completed,
     TResult? Function(DataIsLoading<T> value)? loading,
     TResult? Function(DataError<T> value)? error,
+    TResult? Function(FormError<T> value)? formError,
   }) {
     return loading?.call(this);
   }
@@ -316,6 +333,7 @@ class _$DataIsLoadingImpl<T> implements DataIsLoading<T> {
     TResult Function(DataCompleted<T> value)? completed,
     TResult Function(DataIsLoading<T> value)? loading,
     TResult Function(DataError<T> value)? error,
+    TResult Function(FormError<T> value)? formError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -405,6 +423,7 @@ class _$DataErrorImpl<T> implements DataError<T> {
     required TResult Function(T data) completed,
     required TResult Function() loading,
     required TResult Function(int errorCode, String message) error,
+    required TResult Function() formError,
   }) {
     return error(errorCode, message);
   }
@@ -415,6 +434,7 @@ class _$DataErrorImpl<T> implements DataError<T> {
     TResult? Function(T data)? completed,
     TResult? Function()? loading,
     TResult? Function(int errorCode, String message)? error,
+    TResult? Function()? formError,
   }) {
     return error?.call(errorCode, message);
   }
@@ -425,6 +445,7 @@ class _$DataErrorImpl<T> implements DataError<T> {
     TResult Function(T data)? completed,
     TResult Function()? loading,
     TResult Function(int errorCode, String message)? error,
+    TResult Function()? formError,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -439,6 +460,7 @@ class _$DataErrorImpl<T> implements DataError<T> {
     required TResult Function(DataCompleted<T> value) completed,
     required TResult Function(DataIsLoading<T> value) loading,
     required TResult Function(DataError<T> value) error,
+    required TResult Function(FormError<T> value) formError,
   }) {
     return error(this);
   }
@@ -449,6 +471,7 @@ class _$DataErrorImpl<T> implements DataError<T> {
     TResult? Function(DataCompleted<T> value)? completed,
     TResult? Function(DataIsLoading<T> value)? loading,
     TResult? Function(DataError<T> value)? error,
+    TResult? Function(FormError<T> value)? formError,
   }) {
     return error?.call(this);
   }
@@ -459,6 +482,7 @@ class _$DataErrorImpl<T> implements DataError<T> {
     TResult Function(DataCompleted<T> value)? completed,
     TResult Function(DataIsLoading<T> value)? loading,
     TResult Function(DataError<T> value)? error,
+    TResult Function(FormError<T> value)? formError,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -477,4 +501,118 @@ abstract class DataError<T> implements DataResponse<T> {
   @JsonKey(ignore: true)
   _$$DataErrorImplCopyWith<T, _$DataErrorImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FormErrorImplCopyWith<T, $Res> {
+  factory _$$FormErrorImplCopyWith(
+          _$FormErrorImpl<T> value, $Res Function(_$FormErrorImpl<T>) then) =
+      __$$FormErrorImplCopyWithImpl<T, $Res>;
+}
+
+/// @nodoc
+class __$$FormErrorImplCopyWithImpl<T, $Res>
+    extends _$DataResponseCopyWithImpl<T, $Res, _$FormErrorImpl<T>>
+    implements _$$FormErrorImplCopyWith<T, $Res> {
+  __$$FormErrorImplCopyWithImpl(
+      _$FormErrorImpl<T> _value, $Res Function(_$FormErrorImpl<T>) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FormErrorImpl<T> implements FormError<T> {
+  _$FormErrorImpl();
+
+  @override
+  String toString() {
+    return 'DataResponse<$T>.formError()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$FormErrorImpl<T>);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T data) completed,
+    required TResult Function() loading,
+    required TResult Function(int errorCode, String message) error,
+    required TResult Function() formError,
+  }) {
+    return formError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(T data)? completed,
+    TResult? Function()? loading,
+    TResult? Function(int errorCode, String message)? error,
+    TResult? Function()? formError,
+  }) {
+    return formError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T data)? completed,
+    TResult Function()? loading,
+    TResult Function(int errorCode, String message)? error,
+    TResult Function()? formError,
+    required TResult orElse(),
+  }) {
+    if (formError != null) {
+      return formError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DataCompleted<T> value) completed,
+    required TResult Function(DataIsLoading<T> value) loading,
+    required TResult Function(DataError<T> value) error,
+    required TResult Function(FormError<T> value) formError,
+  }) {
+    return formError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(DataCompleted<T> value)? completed,
+    TResult? Function(DataIsLoading<T> value)? loading,
+    TResult? Function(DataError<T> value)? error,
+    TResult? Function(FormError<T> value)? formError,
+  }) {
+    return formError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DataCompleted<T> value)? completed,
+    TResult Function(DataIsLoading<T> value)? loading,
+    TResult Function(DataError<T> value)? error,
+    TResult Function(FormError<T> value)? formError,
+    required TResult orElse(),
+  }) {
+    if (formError != null) {
+      return formError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FormError<T> implements DataResponse<T> {
+  factory FormError() = _$FormErrorImpl<T>;
 }

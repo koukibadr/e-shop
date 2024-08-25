@@ -103,8 +103,9 @@ class __$$AuthenticationEntityImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AuthenticationEntityImpl implements _AuthenticationEntity {
-  _$AuthenticationEntityImpl({this.email = '', this.password = ''});
+class _$AuthenticationEntityImpl extends _AuthenticationEntity {
+  const _$AuthenticationEntityImpl({this.email = '', this.password = ''})
+      : super._();
 
   @override
   @JsonKey()
@@ -140,9 +141,10 @@ class _$AuthenticationEntityImpl implements _AuthenticationEntity {
               this, _$identity);
 }
 
-abstract class _AuthenticationEntity implements AuthenticationEntity {
-  factory _AuthenticationEntity({final String email, final String password}) =
-      _$AuthenticationEntityImpl;
+abstract class _AuthenticationEntity extends AuthenticationEntity {
+  const factory _AuthenticationEntity(
+      {final String email, final String password}) = _$AuthenticationEntityImpl;
+  const _AuthenticationEntity._() : super._();
 
   @override
   String get email;

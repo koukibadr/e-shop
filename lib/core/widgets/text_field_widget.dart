@@ -8,6 +8,9 @@ class TextFieldWidget extends StatelessWidget {
   final String placeholder;
   final TextEditingController? textController;
   final Function(String?)? onChange;
+  final Color fillColor;
+  final double borderRadius;
+  final IconData prefixIcon;
 
   const TextFieldWidget({
     super.key,
@@ -15,6 +18,9 @@ class TextFieldWidget extends StatelessWidget {
     this.height = 40,
     this.textController,
     this.onChange,
+    this.borderRadius = 20,
+    this.fillColor = Colors.white,
+    this.prefixIcon = Icons.search,
   });
 
   @override
@@ -28,7 +34,8 @@ class TextFieldWidget extends StatelessWidget {
         controller: textController,
         onChanged: onChange,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+          color: fillColor,
+          borderRadius: BorderRadius.circular(borderRadius),
           border: Border.all(
             color: Color(0xFFCCCCCC),
             width: 1,
@@ -40,7 +47,7 @@ class TextFieldWidget extends StatelessWidget {
             start: 5,
           ),
           child: Icon(
-            Icons.search,
+            prefixIcon,
             color: Color(0xFFCCCCCC),
           ),
         ),
