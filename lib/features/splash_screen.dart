@@ -1,5 +1,5 @@
-import 'package:dummy_product/core/di/di_handler.dart';
-import 'package:dummy_product/core/session/secure_session_handler.dart';
+import 'package:e_shop/core/di/di_handler.dart';
+import 'package:e_shop/core/session/secure_session_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

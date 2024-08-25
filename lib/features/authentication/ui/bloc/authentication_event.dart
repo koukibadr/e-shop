@@ -1,4 +1,4 @@
-import 'package:dummy_product/features/authentication/domain/entities/authentication_entity.dart';
+import 'package:e_shop/features/authentication/domain/entities/authentication_entity.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

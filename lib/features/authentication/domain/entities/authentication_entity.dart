@@ -1,4 +1,4 @@
-import 'package:dummy_product/core/utilities/constant_values.dart';
+import 'package:e_shop/core/utilities/constant_values.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'authentication_entity.freezed.dart';

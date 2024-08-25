@@ -1,20 +1,23 @@
-import 'package:dummy_product/core/utilities/constant_values.dart';
-import 'package:dummy_product/core/utilities/data_response.dart';
-import 'package:dummy_product/core/utilities/utility_functions.dart';
-import 'package:dummy_product/features/products/data/models/product_model.dart';
-import 'package:dummy_product/features/products/domain/entities/product_entity.dart';
-import 'package:dummy_product/features/products/domain/usecases/get_product_usecase.dart';
-import 'package:dummy_product/features/products/ui/bloc/product_event.dart';
-import 'package:dummy_product/features/products/ui/bloc/product_query.dart';
-import 'package:dummy_product/features/products/ui/bloc/product_state.dart';
+import 'package:e_shop/core/notification/notification_handler.dart';
+import 'package:e_shop/core/utilities/constant_values.dart';
+import 'package:e_shop/core/utilities/data_response.dart';
+import 'package:e_shop/core/utilities/utility_functions.dart';
+import 'package:e_shop/features/products/data/models/product_model.dart';
+import 'package:e_shop/features/products/domain/entities/product_entity.dart';
+import 'package:e_shop/features/products/domain/usecases/get_product_usecase.dart';
+import 'package:e_shop/features/products/ui/bloc/product_event.dart';
+import 'package:e_shop/features/products/ui/bloc/product_query.dart';
+import 'package:e_shop/features/products/ui/bloc/product_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductBloc extends Bloc<ProductEvent, ProductScreenState> {
   final GetProductUseCase getProductUseCase;
+  final NotificationHandler notificationHandler;
 
   ProductBloc({
     required this.getProductUseCase,
+    required this.notificationHandler,
   }) : super(ProductScreenState(dataResponse: DataIsLoading())) {
     on<GetAllProductsEvent>(onFetchProductTriggered);
     on<GetNextPageEvent>(onPaginationTriggered);
@@ -68,6 +71,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductScreenState> {
           ),
         ),
       );
+      displayDiscountNotification();
     }
   }
 
@@ -168,5 +172,16 @@ class ProductBloc extends Bloc<ProductEvent, ProductScreenState> {
         selectedProduct: event.product,
       ),
     );
+  }
+
+  void displayDiscountNotification() {
+    var products =
+        (state.dataResponse as DataCompleted).data as List<ProductEntity>;
+    if (products.any((product) => product.price.roundToDouble() <= 10)) {
+      notificationHandler.displayNotification(
+        'E-Shop',
+        'Discount offers not to waste',
+      );
+    }
   }
 }

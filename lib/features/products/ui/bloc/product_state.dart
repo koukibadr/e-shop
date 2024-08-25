@@ -1,6 +1,6 @@
-import 'package:dummy_product/core/utilities/data_response.dart';
-import 'package:dummy_product/features/products/domain/entities/product_entity.dart';
-import 'package:dummy_product/features/products/ui/bloc/product_query.dart';
+import 'package:e_shop/core/utilities/data_response.dart';
+import 'package:e_shop/features/products/domain/entities/product_entity.dart';
+import 'package:e_shop/features/products/ui/bloc/product_query.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'product_state.freezed.dart';

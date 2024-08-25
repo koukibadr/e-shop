@@ -1,7 +1,7 @@
-import 'package:dummy_product/core/session/secure_session_handler.dart';
-import 'package:dummy_product/core/utilities/data_response.dart';
-import 'package:dummy_product/features/authentication/data/repositories/authentication_repository.dart';
-import 'package:dummy_product/features/authentication/domain/entities/authentication_entity.dart';
+import 'package:e_shop/core/session/secure_session_handler.dart';
+import 'package:e_shop/core/utilities/data_response.dart';
+import 'package:e_shop/features/authentication/data/repositories/authentication_repository.dart';
+import 'package:e_shop/features/authentication/domain/entities/authentication_entity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthenticationRepositoryImpl extends AuthenticationRepository {

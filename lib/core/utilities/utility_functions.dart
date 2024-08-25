@@ -1,4 +1,4 @@
-import 'package:dummy_product/features/products/domain/entities/product_entity.dart';
+import 'package:e_shop/features/products/domain/entities/product_entity.dart';
 
 List<double> getMaxAndMinPrices(List<ProductEntity> products){
   var listOfPrices = products.map((product)=>product.price).toList();

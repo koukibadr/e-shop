@@ -1,28 +1,27 @@
 import 'package:e_shop/core/utilities/data_response.dart';
 import 'package:e_shop/core/widgets/loading_popup.dart';
 import 'package:e_shop/core/widgets/text_field_widget.dart';
-import 'package:e_shop/features/authentication/ui/bloc/auth_screen_state.dart';
-import 'package:e_shop/features/authentication/ui/bloc/authentication_bloc.dart';
-import 'package:e_shop/features/authentication/ui/bloc/authentication_event.dart';
+import 'package:e_shop/features/register/ui/bloc/register_bloc.dart';
+import 'package:e_shop/features/register/ui/bloc/register_events.dart';
+import 'package:e_shop/features/register/ui/bloc/register_screen_state.dart';
 import 'package:e_shop/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class AuthenticationScreen extends StatelessWidget {
-  const AuthenticationScreen({super.key});
+class RegisterationScreen extends StatelessWidget {
+  const RegisterationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: BlocConsumer<AuthenticationBloc, AuthScreenState>(
+        child: BlocConsumer<RegisterBloc, RegisterScreenState>(
           listenWhen: (previous, current) {
-            return previous.authenticationResult !=
-                current.authenticationResult;
+            return previous.registerationResult != current.registerationResult;
           },
           listener: (context, state) {
-            if (state.authenticationResult is FormError) {
+            if (state.registerationResult is FormError) {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text(
@@ -30,19 +29,19 @@ class AuthenticationScreen extends StatelessWidget {
                   ),
                 ),
               );
-            } else if (state.authenticationResult is DataIsLoading) {
+            } else if (state.registerationResult is DataIsLoading) {
               const LoadingPopup(
                 message: 'Authenticating User...',
               ).show(context);
-            } else if (state.authenticationResult is DataCompleted) {
+            } else if (state.registerationResult is DataCompleted) {
               GoRouter.of(context).pop();
               GoRouter.of(context).go('/products');
-            } else if (state.authenticationResult is DataError) {
+            } else if (state.registerationResult is DataError) {
               GoRouter.of(context).pop();
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text(
-                    'Error while authenticating try again later',
+                    'Error while creating a new account try again later',
                   ),
                 ),
               );
@@ -81,7 +80,7 @@ class AuthenticationScreen extends StatelessWidget {
                                   width: 10,
                                 ),
                                 Text(
-                                  'Login',
+                                  'Registration',
                                   style: Theme.of(context)
                                       .textTheme
                                       .headlineLarge
@@ -97,7 +96,7 @@ class AuthenticationScreen extends StatelessWidget {
                                     MediaQuery.of(context).size.width * 0.6,
                               ),
                               child: Text(
-                                'Enter below your credentials to continue shopping',
+                                'Create a new account and get all newest products',
                                 style: Theme.of(context).textTheme.bodyMedium,
                               ),
                             ),
@@ -113,8 +112,8 @@ class AuthenticationScreen extends StatelessWidget {
                                   borderRadius: 5,
                                   fillColor: Colors.grey[50]!,
                                   onChange: (email) {
-                                    context.read<AuthenticationBloc>().add(
-                                          UpdateAuthEntityEvent(
+                                    context.read<RegisterBloc>().add(
+                                          UpdateRegisterForm(
                                             state.authenticationEntity.copyWith(
                                               email: email ?? '',
                                             ),
@@ -125,42 +124,22 @@ class AuthenticationScreen extends StatelessWidget {
                                 const SizedBox(
                                   height: 10,
                                 ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    TextFieldWidget(
-                                      placeholder: 'Password',
-                                      prefixIcon: Icons.lock_open_sharp,
-                                      height: 50,
-                                      borderRadius: 5,
-                                      isObscure: true,
-                                      fillColor: Colors.grey[50]!,
-                                      onChange: (password) {
-                                        context.read<AuthenticationBloc>().add(
-                                              UpdateAuthEntityEvent(
-                                                state.authenticationEntity
-                                                    .copyWith(
-                                                  password: password ?? '',
-                                                ),
-                                              ),
-                                            );
-                                      },
-                                    ),
-                                    InkWell(
-                                      onTap: () {
-                                        GoRouter.of(context).push('/register');
-                                      },
-                                      child: const Text(
-                                        'Create a new account',
-                                        style: TextStyle(
-                                          color: Colors.amber,
-                                          decoration: TextDecoration.underline,
-                                          decorationColor: Colors.amber,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    )
-                                  ],
+                                TextFieldWidget(
+                                  placeholder: 'Password',
+                                  prefixIcon: Icons.lock_open_sharp,
+                                  height: 50,
+                                  borderRadius: 5,
+                                  fillColor: Colors.grey[50]!,
+                                  isObscure: true,
+                                  onChange: (password) {
+                                    context.read<RegisterBloc>().add(
+                                          UpdateRegisterForm(
+                                            state.authenticationEntity.copyWith(
+                                              password: password ?? '',
+                                            ),
+                                          ),
+                                        );
+                                  },
                                 ),
                                 const SizedBox(
                                   height: 30,
@@ -171,8 +150,8 @@ class AuthenticationScreen extends StatelessWidget {
                                   child: ElevatedButton(
                                     onPressed: () {
                                       context
-                                          .read<AuthenticationBloc>()
-                                          .add(const AuthenticateUserEvent());
+                                          .read<RegisterBloc>()
+                                          .add(const RegisterNewUser());
                                     },
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.blue,
@@ -185,25 +164,6 @@ class AuthenticationScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    context
-                                        .read<AuthenticationBloc>()
-                                        .add(const GuestAuthenticationEvent());
-                                  },
-                                  child: const Text(
-                                    'Continue as a guest',
-                                    style: TextStyle(
-                                      color: Colors.amber,
-                                      decoration: TextDecoration.underline,
-                                      decorationColor: Colors.amber,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                )
                               ],
                             )
                           ],

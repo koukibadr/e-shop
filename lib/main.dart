@@ -1,9 +1,11 @@
-import 'package:dummy_product/core/di/di_handler.dart';
-import 'package:dummy_product/core/utilities/app_routes.dart';
-import 'package:dummy_product/core/utilities/firebase_options.dart';
-import 'package:dummy_product/features/authentication/ui/bloc/authentication_bloc.dart';
-import 'package:dummy_product/features/cart/ui/bloc/cart_bloc.dart';
-import 'package:dummy_product/features/products/ui/bloc/product_bloc.dart';
+import 'package:e_shop/core/di/di_handler.dart';
+import 'package:e_shop/core/notification/notification_handler.dart';
+import 'package:e_shop/core/utilities/app_routes.dart';
+import 'package:e_shop/core/utilities/firebase_options.dart';
+import 'package:e_shop/features/authentication/ui/bloc/authentication_bloc.dart';
+import 'package:e_shop/features/cart/ui/bloc/cart_bloc.dart';
+import 'package:e_shop/features/products/ui/bloc/product_bloc.dart';
+import 'package:e_shop/features/register/ui/bloc/register_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,6 +18,7 @@ void main() async {
   await Firebase.initializeApp(
     options: firebaseOptions,
   );
+  await getItInstance.get<NotificationHandler>().init();
   runApp(
     MultiBlocProvider(
       providers: [
@@ -27,6 +30,9 @@ void main() async {
         ),
         BlocProvider(
           create: (context) => getItInstance.get<AuthenticationBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getItInstance.get<RegisterBloc>(),
         ),
       ],
       child: const MyApp(),

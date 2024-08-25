@@ -1,8 +1,8 @@
-import 'package:dummy_product/core/utilities/data_response.dart';
-import 'package:dummy_product/features/authentication/domain/usecases/auth_user_usecase.dart';
-import 'package:dummy_product/features/authentication/domain/usecases/guest_auth_usecase.dart';
-import 'package:dummy_product/features/authentication/ui/bloc/auth_screen_state.dart';
-import 'package:dummy_product/features/authentication/ui/bloc/authentication_event.dart';
+import 'package:e_shop/core/utilities/data_response.dart';
+import 'package:e_shop/features/authentication/domain/usecases/auth_user_usecase.dart';
+import 'package:e_shop/features/authentication/domain/usecases/guest_auth_usecase.dart';
+import 'package:e_shop/features/authentication/ui/bloc/auth_screen_state.dart';
+import 'package:e_shop/features/authentication/ui/bloc/authentication_event.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthScreenState> {

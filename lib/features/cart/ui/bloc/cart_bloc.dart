@@ -1,6 +1,6 @@
-import 'package:dummy_product/features/cart/domain/entities/cart_item_entity.dart';
-import 'package:dummy_product/features/cart/ui/bloc/cart_events.dart';
-import 'package:dummy_product/features/cart/ui/bloc/cart_state.dart';
+import 'package:e_shop/features/cart/domain/entities/cart_item_entity.dart';
+import 'package:e_shop/features/cart/ui/bloc/cart_events.dart';
+import 'package:e_shop/features/cart/ui/bloc/cart_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CartBloc extends Bloc<CartBlocEvents, CartScreenState> {

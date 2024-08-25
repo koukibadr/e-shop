@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:dummy_product/core/session/secure_session_handler.dart';
-import 'package:dummy_product/core/utilities/constant_values.dart';
-import 'package:dummy_product/features/authentication/domain/entities/authentication_entity.dart';
+import 'package:e_shop/core/session/secure_session_handler.dart';
+import 'package:e_shop/core/utilities/constant_values.dart';
+import 'package:e_shop/features/authentication/domain/entities/authentication_entity.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SecureSessionHandlerImpl extends SecureSessionHandler {

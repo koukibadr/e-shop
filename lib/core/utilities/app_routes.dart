@@ -1,8 +1,9 @@
-import 'package:dummy_product/features/authentication/ui/screens/authentication_screen.dart';
-import 'package:dummy_product/features/cart/ui/screens/cart_screen.dart';
-import 'package:dummy_product/features/products/ui/screens/product_screen.dart';
-import 'package:dummy_product/features/products/ui/screens/product_screen_details.dart';
-import 'package:dummy_product/features/splash_screen.dart';
+import 'package:e_shop/features/authentication/ui/screens/authentication_screen.dart';
+import 'package:e_shop/features/cart/ui/screens/cart_screen.dart';
+import 'package:e_shop/features/products/ui/screens/product_screen.dart';
+import 'package:e_shop/features/products/ui/screens/product_screen_details.dart';
+import 'package:e_shop/features/register/ui/screens/register_screen.dart';
+import 'package:e_shop/features/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
 final appRoutes = GoRouter(
@@ -16,6 +17,10 @@ final appRoutes = GoRouter(
     GoRoute(
       path: '/login',
       builder: (context, state) => const AuthenticationScreen(),
+    ),
+    GoRoute(
+      path: '/register',
+      builder: (context, state) => const RegisterationScreen(),
     ),
     GoRoute(
       path: '/products',

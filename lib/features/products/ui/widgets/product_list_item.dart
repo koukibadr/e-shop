@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dummy_product/features/products/domain/entities/product_entity.dart';
+import 'package:e_shop/features/products/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
 
 class ProductListItem extends StatelessWidget {

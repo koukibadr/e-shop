@@ -1,5 +1,5 @@
 
-import 'package:dummy_product/features/cart/domain/entities/cart_item_entity.dart';
+import 'package:e_shop/features/cart/domain/entities/cart_item_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'cart_state.freezed.dart';

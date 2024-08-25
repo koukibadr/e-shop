@@ -1,4 +1,4 @@
-import 'package:dummy_product/core/widgets/text_field_widget.dart';
+import 'package:e_shop/core/widgets/text_field_widget.dart';
 import 'package:flutter/material.dart';
 
 class ProductScreenAppBar extends StatelessWidget

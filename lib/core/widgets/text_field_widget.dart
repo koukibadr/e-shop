@@ -11,6 +11,7 @@ class TextFieldWidget extends StatelessWidget {
   final Color fillColor;
   final double borderRadius;
   final IconData prefixIcon;
+  final bool isObscure;
 
   const TextFieldWidget({
     super.key,
@@ -21,6 +22,7 @@ class TextFieldWidget extends StatelessWidget {
     this.borderRadius = 20,
     this.fillColor = Colors.white,
     this.prefixIcon = Icons.search,
+    this.isObscure = false,
   });
 
   @override
@@ -28,6 +30,7 @@ class TextFieldWidget extends StatelessWidget {
     return SizedBox(
       height: height,
       child: CupertinoTextField(
+        obscureText: isObscure,
         padding: EdgeInsets.symmetric(
           horizontal: 10,
         ),
